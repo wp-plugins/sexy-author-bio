@@ -11,7 +11,7 @@ Adds a sexy, customizable author bio section below your posts.
 
 == Description ==
 
-Display a box with the author's biography and also social icons in bottom of the post.
+Adds a sexy, customizable author bio section below your posts.
 
 = Credits =
 
