@@ -16,7 +16,7 @@ Adds a sexy, customizable author bio section below your posts.
 = Credits =
 
 * Initial idea by [Gustavo Freitas](http://gfsolucoes.net/).
-* This is a derivative work of the Author Bio Box WordPress Plugin, which was authored by Claudio Sanches AKA claudiosanches <contato@claudiosmweb.com>.
+* This is a derivative work of the [Author Bio Box WordPress Plugin](http://wordpress.org/plugins/author-bio-box/), which was authored by [Claudio Sanches](http://profiles.wordpress.org/claudiosanches/).
 
 == Installation ==
 
