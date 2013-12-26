@@ -3,7 +3,7 @@ Contributors: penguininitiatives
 Tags: author, bio, biography, social, google plus, twitter
 Requires at least: 3.8
 Tested up to: 3.8
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -42,6 +42,10 @@ Use this function:
 * This plugin is released under a GPL license.
 
 == Changelog ==
+
+= 1.0.1 12/26/2013 =
+
+* Made it so Sexy Author Bio only shows up on posts of type post & adjusted margin above author names.
 
 = 1.0.0 12/22/2013 =
 

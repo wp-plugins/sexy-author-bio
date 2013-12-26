@@ -292,10 +292,10 @@ class Sexy_Author_Bio {
 	protected function is_display( $settings ) {
 		switch( $settings['display'] ) {
 			case 'posts':
-				return is_single();
+				return is_single() && 'post' == get_post_type();
 				break;
 			case 'home_posts':
-				return is_single() || is_home();
+				return is_single() && 'post' == get_post_type() || is_home();
 				break;
 
 			default:
