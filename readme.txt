@@ -43,6 +43,10 @@ Use this function:
 
 == Changelog ==
 
+= 1.0.2 1/31/2014 =
+
+* Cleaned up the styles.
+
 = 1.0.1 12/26/2013 =
 
 * Made it so Sexy Author Bio only shows up on posts of type post & adjusted margin above author names.

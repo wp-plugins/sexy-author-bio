@@ -1,9 +1,9 @@
-@import url(http://fonts.googleapis.com/css?family=Oswald:400,300,700);
+
 #sexy-author-bio{
-padding: 10px 10px 0 10px !important;
-margin: 0px !important;
-margin-top: 20px !important;
-font-size: 0.73em !important;
+padding: 10px 10px 0 10px;
+margin: 0px;
+margin-top: 20px;
+font-size: 0.73em;
 }
 #sexy-author-bio:after{
 content:"";
@@ -14,83 +14,91 @@ clear:both
 margin:0;padding:0
 }
 #sexy-author-bio h3{
-padding: 25px 0px !important;
-font-size: 62px !important;
-font-weight: 600 !important;
-line-height: 62px !important;
-text-transform: uppercase !important;
-display: block !important;
-margin: -15px 0 -15px 0 !important;
-font-family: 'Oswald', sans-serif !important;
-clear: none !important;
+padding: 25px 0px;
+font-size: 62px;
+font-weight: 600;
+line-height: 1em;
+text-transform: uppercase;
+display: block;
+margin: -15px 0 -15px 0;
+clear: none;
 }
 #sexy-author-bio h3 a{
-text-decoration: none !important;
+text-decoration: none;
 }
 #sexy-author-bio h3 a:hover{
-text-decoration: underline !important;
+text-decoration: underline;
 }
 #sexy-author-bio h4{
-clear: none !important;
-font-size: 16px !important;
-letter-spacing: 0.59px !important;
-font-weight: 600 !important;
-font-family: 'Oswald', sans-serif !important;
-font-style: normal !important;
-text-transform: uppercase !important;
-line-height: 1.1em !important;
-padding: .5em 0 .5em 0 !important;
-margin-bottom: 0 !important;
+clear: none;
+font-size: 16px;
+letter-spacing: 0.59px;
+font-weight: 600;
+font-style: normal;
+text-transform: uppercase;
+line-height: 1em;
+padding: .5em 0 .5em 0;
+margin-bottom: 0;
 }
 #sexy-author-bio h4 a{
-text-decoration: none !important;
+text-decoration: none;
 }
 #sexy-author-bio h4 a:hover{
-text-decoration: underline !important;
+text-decoration: underline;
 }
 #sexy-author-bio .bio-description{
-margin-bottom:10px !important;
-font-size: 14px !important;
-line-height: 17px !important;
-font-weight: 300 !important;
-font-family: Helvetica, sans-serif !important;
+margin-bottom:10px;
+font-size: 14px;
+line-height: 1.3em;
+font-weight: 300;
+font-family: Helvetica, sans-serif;
 }
 #sexy-author-bio p{
-margin-bottom:5px !important;
+margin-bottom:5px;
 }
 #sexy-author-bio .bio-gravatar{
-float:left !important;
+float:left;
 }
 #sexy-author-bio .bio-gravatar img{
-float: left !important;
-margin-right: 10px !important;
-border: solid 1px !important;
-margin-bottom: 5px !important;
-margin-top: 2px !important;
-background-color: #FFF !important;
+float: left;
+margin-right: 10px;
+border: solid 1px;
+margin-bottom: 5px;
+margin-top: 2px;
+background-color: #FFF;
+}
+#sig-twitter, #sig-google, #sig-facebook, #sig-linkedin {
+height:55px;
+width:55px;
+float:right;
+border:0;
+margin-left:2px;
+padding:0;
 }
 #sexy-author-bio .bio-icon{filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=100);opacity:1;-webkit-transition:all 0.4s ease;-moz-transition:all 0.4s ease;-o-transition:all 0.4s ease;transition:all 0.4s ease;background-color:transparent;background-image:url("../images/sprite.png");background-repeat:no-repeat;display:inline-block;margin-right:3px;height:16px;width:16px}
 #sexy-author-bio .bio-icon:hover{filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=70);opacity:0.7}
 @media only screen and (max-width: 767px) { 
 	#sexy-author-bio h3 {
-    width: 100% !important;
-    padding: 0 !important;
-    line-height: 1em !important;
-    margin: 0 !important;
+    width: 100%;
+    padding: 0;
+    line-height: 1em;
+    margin: 0;
+    line-height: .7em;
     }
     #sexy-author-bio h3 a {
-    width: 100% !important;
+    width: 100%;
+    font-size: 0.7em;
     }
     #sexy-author-bio h4 {
-    clear: both !important;
-    line-height: 1.3em !important;
+    clear: both;
+    line-height: 1.3em;
     }
     #sig-google, #sig-twitter, #sig-facebook, #sig-linkedin {
-    margin: 0 0 10px 2px !important;
-    position: static !important;
-    float: none !important
+    margin: 0 0 10px 2px;
+    position: static;
+    float: none;
     }
     .bio-gravatar img{
-    display: none !important;
+    display: none;
     }
 }

@@ -342,23 +342,23 @@ class Sexy_Author_Bio {
 		$html = '<div id="sexy-author-bio" style="' . $styles . '">';
 
 		if ( $social['twitter'] ){
-			$twitter = '<a href="' . $social['twitter'] . '" target="' . $settings['link_target'] . '"><img id="sig-twitter" src="'.plugins_url( $path, $plugin ).'/sexy-author-bio/public/assets/images/twitter.png" style="height:55px;width:55px;float:right;border:0;margin-left:2px;padding:0;"></a>';
+			$twitter = '<a href="' . $social['twitter'] . '" target="' . $settings['link_target'] . '"><img id="sig-twitter" src="'.plugins_url( $path, $plugin ).'/sexy-author-bio/public/assets/images/twitter.png"></a>';
 		}
 
 		if ( $social['googleplus'] ){
-			$googleplus = '<a href="' . $social['googleplus'] . '" target="' . $settings['link_target'] . '"><img id="sig-google" src="'.plugins_url( $path, $plugin ).'/sexy-author-bio/public/assets/images/google-plus.png" style="height:55px;width:55px;float:right;border:0;margin-left:2px;padding:0;"></a>';
+			$googleplus = '<a href="' . $social['googleplus'] . '" target="' . $settings['link_target'] . '"><img id="sig-google" src="'.plugins_url( $path, $plugin ).'/sexy-author-bio/public/assets/images/google-plus.png"></a>';
 		}
 
 		if ( $social['facebook'] ){
-			$facebook = '<a href="' . $social['facebook'] . '" target="' . $settings['link_target'] . '"><img id="sig-facebook" src="'.plugins_url( $path, $plugin ).'/sexy-author-bio/public/assets/images/facebook.png" style="height:55px;width:55px;float:right;border:0;margin-left:2px;padding:0;"></a>';
+			$facebook = '<a href="' . $social['facebook'] . '" target="' . $settings['link_target'] . '"><img id="sig-facebook" src="'.plugins_url( $path, $plugin ).'/sexy-author-bio/public/assets/images/facebook.png"></a>';
 		}
 
 		if ( $social['linkedin'] ){
-			$linkedin = '<a href="' . $social['linkedin'] . '" target="' . $settings['link_target'] . '"><img id="sig-linkedin" src="'.plugins_url( $path, $plugin ).'/sexy-author-bio/public/assets/images/linkedin.png" style="height:55px;width:55px;float:right;border:0;margin-left:2px;padding:0;"></a>';
+			$linkedin = '<a href="' . $social['linkedin'] . '" target="' . $settings['link_target'] . '"><img id="sig-linkedin" src="'.plugins_url( $path, $plugin ).'/sexy-author-bio/public/assets/images/linkedin.png"></a>';
 		}
 
 		if ( get_the_author_meta('job-title') && get_the_author_meta('company') && get_the_author_meta('company-website-url') ) {
-			$titleline = '<h4 style="color:' . $settings['title_color'] . ';">' . get_the_author_meta('job-title') . ' at <a href="' . get_the_author_meta('company-website-url') . '" target="' . $settings['link_target'] . '" style="margin-left:3px;color:' . $settings['highlight_color'] . ';">' . get_the_author_meta('company') . '</a></h4>';
+			$titleline = '<h4 style="color:' . $settings['title_color'] . ';">' . get_the_author_meta('job-title') . ' at <a href="' . get_the_author_meta('company-website-url') . '" target="' . $settings['link_target'] . '" style="color:' . $settings['highlight_color'] . ';">' . get_the_author_meta('company') . '</a></h4>';
 		}
 
 		$html .= '<div>'.$linkedin.''.$facebook.''.$twitter.''.$googleplus.'</div><h3><a style="color: ' . $settings['highlight_color'] . ';" href="' . get_the_author_meta('name-link') . '" title="' . esc_attr( __( '', self::get_plugin_slug() ) . '' . get_the_author() ) .'" target="' . $settings['link_target'] . '">' . get_the_author() . '</a></h3><a style="color: ' . $settings['highlight_color'] . ';" href="' . get_the_author_meta('avatar-link') . '" target="' . $settings['link_target'] . '"><div class="bio-gravatar">' . get_avatar( get_the_author_meta('ID'), $gravatar ) . '</div></a>'.$titleline.'<p class="bio-description">' . apply_filters( 'sexyauthorbio_author_description', get_the_author_meta( 'description' ) ) . '</p>';
