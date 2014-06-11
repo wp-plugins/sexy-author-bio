@@ -229,6 +229,10 @@ class Sexy_Author_Bio {
 		$options = array(
 			'display' => 'posts',
 			'gravatar' => 100,
+			'author_name_font_size' => 62,
+			'author_name_font' => '',
+			'author_name_capitalization' => 'uppercase',
+			'author_name_decoration' => 'none',
 			'background_color' => '#333333',
 			'highlight_color' => '#0088cc',
 			'text_color' => '#ffffff',
@@ -339,7 +343,9 @@ class Sexy_Author_Bio {
 			$settings['text_color']
 		);
 
-		$html = '<div id="sexy-author-bio" style="' . $styles . '">';
+		if ( get_the_author_meta('hide-signature') ) { $hidden = ";display:none!important;"; }else{ $hidden = ""; }
+
+		$html = '<div id="sexy-author-bio" style="' . $styles . $hidden . '">';
 
 		if ( $social['twitter'] ){
 			$twitter = '<a href="' . $social['twitter'] . '" target="' . $settings['link_target'] . '"><img id="sig-twitter" src="'.plugins_url( $path, $plugin ).'/sexy-author-bio/public/assets/images/twitter.png"></a>';
@@ -361,7 +367,7 @@ class Sexy_Author_Bio {
 			$titleline = '<h4 style="color:' . $settings['title_color'] . ';">' . get_the_author_meta('job-title') . ' at <a href="' . get_the_author_meta('company-website-url') . '" target="' . $settings['link_target'] . '" style="color:' . $settings['highlight_color'] . ';">' . get_the_author_meta('company') . '</a></h4>';
 		}
 
-		$html .= '<div>'.$linkedin.''.$facebook.''.$twitter.''.$googleplus.'</div><h3><a style="color: ' . $settings['highlight_color'] . ';" href="' . get_the_author_meta('name-link') . '" title="' . esc_attr( __( '', self::get_plugin_slug() ) . '' . get_the_author() ) .'" target="' . $settings['link_target'] . '">' . get_the_author() . '</a></h3><a style="color: ' . $settings['highlight_color'] . ';" href="' . get_the_author_meta('avatar-link') . '" target="' . $settings['link_target'] . '"><div class="bio-gravatar">' . get_avatar( get_the_author_meta('ID'), $gravatar ) . '</div></a>'.$titleline.'<p class="bio-description">' . apply_filters( 'sexyauthorbio_author_description', get_the_author_meta( 'description' ) ) . '</p>';
+		$html .= '<div>'.$linkedin.''.$facebook.''.$twitter.''.$googleplus.'</div><h3 style="font-family:' . $settings['author_name_font'] . '!important;font-size: ' . $settings['author_name_font_size'] . 'px!important;"><a style="text-decoration:' . $settings['author_name_decoration'] . '!important;text-transform:' . $settings['author_name_capitalization'] . '!important;color: ' . $settings['highlight_color'] . ';" href="' . get_the_author_meta('name-link') . '" title="' . esc_attr( __( '', self::get_plugin_slug() ) . '' . get_the_author() ) .'" target="' . $settings['link_target'] . '">' . get_the_author() . '</a></h3><a style="color: ' . $settings['highlight_color'] . ';" href="' . get_the_author_meta('avatar-link') . '" target="' . $settings['link_target'] . '"><div class="bio-gravatar">' . get_avatar( get_the_author_meta('ID'), $gravatar ) . '</div></a>'.$titleline.'<p class="bio-description">' . apply_filters( 'sexyauthorbio_author_description', get_the_author_meta( 'description' ) ) . '</p>';
 		$html .= '</div>';
 
 		return $html;

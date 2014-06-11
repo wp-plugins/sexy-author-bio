@@ -3,7 +3,7 @@ Contributors: penguininitiatives
 Tags: author, bio, biography, social, google plus, twitter
 Requires at least: 3.8
 Tested up to: 3.8
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -44,11 +44,28 @@ Use this function:
 
 == Frequently Asked Questions ==
 
+= How do I customize the look and feel of Sexy Author Bio? =
+
+* Once you've installed it simply go to your WordPress Admin Dashboard and then go to Settings > Sexy Author Bio
+
+= How do I customize a user's Sexy Author Bio? =
+
+* Once you've installed it simply go to your WordPress Admin Dashboard and then edit the user for which you want to customize the Sexy Author Bio. You'll see a section called "Author Signature Info" that contains Sexy Author Bio's customization options for the user.
+
 = What is the plugin license? =
 
 * This plugin is released under a GPL license.
 
 == Changelog ==
+
+= 1.0.3 6/11/2014 =
+
+* Added Author Name Font Size options
+* Added Author Name Font options
+* Added Author Name Capitilization options
+* Added Author Name Decoration options
+* Added option to hide display of Sexy Author Bio for specific users
+* Added a couple of FAQ's to make it more clear how to use the plugin
 
 = 1.0.2 1/31/2014 =
 

@@ -127,6 +127,46 @@ class Sexy_Author_Bio_Admin {
 				'section' => 'design',
 				'menu' => 'sexyauthorbio_settings'
 			),
+			'author_name_font_size' => array(
+				'title' => __( 'Author Name Font Size', $this->plugin_slug ),
+				'default' => 62,
+				'type' => 'text',
+				'description' => sprintf( __( 'Set the author name font size', $this->plugin_slug ) ),
+				'section' => 'design',
+				'menu' => 'sexyauthorbio_settings'
+			),
+			'author_name_font' => array(
+				'title' => __( 'Author Name Font', $this->plugin_slug ),
+				'default' => '',
+				'type' => 'text',
+				'description' => sprintf( __( 'Set the author name font', $this->plugin_slug ) ),
+				'section' => 'design',
+				'menu' => 'sexyauthorbio_settings'
+			),
+			'author_name_capitalization' => array(
+				'title' => __( 'Author Name Capitalization', $this->plugin_slug ),
+				'default' => 'uppercase',
+				'type' => 'select',
+				'section' => 'design',
+				'menu' => 'sexyauthorbio_settings',
+				'options' => array(
+					'uppercase' => __( 'UPPERCASE', $this->plugin_slug ),
+					'capitalize' => __( 'Capitalize', $this->plugin_slug ),
+					'lowercase' => __( 'lowercase', $this->plugin_slug ),
+					'none' => __( 'As is', $this->plugin_slug )
+				)
+			),
+			'author_name_decoration' => array(
+				'title' => __( 'Author Name Decoration', $this->plugin_slug ),
+				'default' => 'none',
+				'type' => 'select',
+				'section' => 'design',
+				'menu' => 'sexyauthorbio_settings',
+				'options' => array(
+					'none' => __( 'None', $this->plugin_slug ),
+					'underline' => __( 'Underline', $this->plugin_slug )
+				)
+			),
 			'background_color' => array(
 				'title' => __( 'Background color', $this->plugin_slug ),
 				'default' => '#333333',

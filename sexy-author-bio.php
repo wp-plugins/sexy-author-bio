@@ -10,7 +10,7 @@
  * @wordpress-plugin
  * Plugin Name:       Sexy Author Bio
  * Description:       Adds a sexy, customizable author bio section below your posts.
- * Version:           1.0.2
+ * Version:           1.0.3
  * Author:            penguininitiatives
  * Author URI:        http://penguininitiatives.com/
  * Text Domain:       sexy-author-bio
@@ -113,6 +113,13 @@ function extra_user_profile_fields( $user ) { ?>
 <span class="description"><?php _e("Please enter the URL you want your avatar to link to."); ?></span>
 </td>
 </tr>
+<tr>
+<th><label for="hide-signature"><?php _e("Hide Signature"); ?></label></th>
+<td>
+<input type="text" name="hide-signature" id="hide-signature" value="<?php echo esc_attr( get_the_author_meta( 'hide-signature', $user->ID ) ); ?>" class="regular-text" /><br />
+<span class="description"><?php _e("Enter any text above if you want the signature hidden for this user. Leave it blank if you want the signature shown for this user."); ?></span>
+</td>
+</tr>
 </table>
 <?php }
 
@@ -128,4 +135,5 @@ update_user_meta( $user_id, 'company', $_POST['company'] );
 update_user_meta( $user_id, 'company-website-url', $_POST['company-website-url'] );
 update_user_meta( $user_id, 'name-link', $_POST['name-link'] );
 update_user_meta( $user_id, 'avatar-link', $_POST['avatar-link'] );
+update_user_meta( $user_id, 'hide-signature', $_POST['hide-signature'] );
 }
