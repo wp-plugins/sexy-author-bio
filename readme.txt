@@ -66,7 +66,7 @@ Use this function:
 
 * Added Author Name Font Size options
 * Added Author Name Font options
-* Added Author Name Capitilization options
+* Added Author Name Capitalization options
 * Added Author Name Decoration options
 * Added option to hide display of Sexy Author Bio for specific users
 * Added a couple of FAQ's to make it more clear how to use the plugin
