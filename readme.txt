@@ -52,6 +52,10 @@ Use this function:
 
 * Once you've installed it simply go to your WordPress Admin Dashboard and then edit the user for which you want to customize the Sexy Author Bio. You'll see a section called "Author Signature Info" that contains Sexy Author Bio's customization options for the user.
 
+= How do I disable Gravatar Hovercards? =
+
+* In the WordPress Admin Dashboard go to Settings > Discussion and then under the Avatars section uncheck Gravatar Hovercards "View people’s profiles when you mouse over their Gravatars" and then save your changes.
+
 = What is the plugin license? =
 
 * This plugin is released under a GPL license.
