@@ -18,6 +18,13 @@ Adds a sexy, customizable author bio section below your posts.
 * Initial idea by [Gustavo Freitas](http://gfsolucoes.net/).
 * This is a derivative work of the [Author Bio Box WordPress Plugin](http://wordpress.org/plugins/author-bio-box/), which was authored by [Claudio Sanches](http://profiles.wordpress.org/claudiosanches/).
 
+= Further Reading =
+
+* Get the [best WordPress Hosting](http://penguininitiatives.com/best-wordpress-hosting-2014/).
+* Get the [best free WordPress plugins](http://penguininitiatives.com/best-wordpress-plugins-free-2014/).
+* Get the [best premium WordPress plugins](http://penguininitiatives.com/best-premium-wordpress-plugins-2014/).
+* Get the [best WordPress themes](http://penguininitiatives.com/fastest-wordpress-themes-2014/).
+
 == Installation ==
 
 * Upload plugin files to your plugins folder, or install using WordPress built-in Add New Plugin installer;
