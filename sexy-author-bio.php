@@ -10,7 +10,7 @@
  * @wordpress-plugin
  * Plugin Name:       Sexy Author Bio
  * Description:       Adds a sexy, customizable author bio section below your posts.
- * Version:           1.0.3
+ * Version:           1.0.31
  * Author:            penguininitiatives
  * Author URI:        http://penguininitiatives.com/
  * Text Domain:       sexy-author-bio
@@ -137,3 +137,11 @@ update_user_meta( $user_id, 'name-link', $_POST['name-link'] );
 update_user_meta( $user_id, 'avatar-link', $_POST['avatar-link'] );
 update_user_meta( $user_id, 'hide-signature', $_POST['hide-signature'] );
 }
+
+// Enable Sexy Author Bio Shortcode
+function sexy_author_bio_shortcode( $atts ){
+	if ( function_exists( 'get_Sexy_Author_Bio' ) ) {
+        return get_Sexy_Author_Bio();
+    }
+}
+add_shortcode( 'sexy_author_bio', 'sexy_author_bio_shortcode' );

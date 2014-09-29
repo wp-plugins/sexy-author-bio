@@ -3,7 +3,7 @@ Contributors: penguininitiatives
 Tags: author, bio, biography, social, google plus, twitter
 Requires at least: 3.8
 Tested up to: 3.8
-Stable tag: 1.0.3
+Stable tag: 1.0.31
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -34,7 +34,11 @@ Adds a sexy, customizable author bio section below your posts.
 
 = Add the box directly =
 
-Use this function:
+Use this shortcode:
+
+	[sexy_author_bio]
+
+...or this function:
 
 	<?php 
 		if ( function_exists( 'get_Sexy_Author_Bio' ) ) {
@@ -51,6 +55,12 @@ Use this function:
 = How do I customize a user's Sexy Author Bio? =
 
 * Once you've installed it simply go to your WordPress Admin Dashboard and then edit the user for which you want to customize the Sexy Author Bio. You'll see a section called "Author Signature Info" that contains Sexy Author Bio's customization options for the user.
+
+== Screenshots ==
+
+1. Example Sexy Author Bio Front-End Display
+2. Example Sexy Author Bio User Settings
+3. Example Sexy Author Bio Display & Design Settings
 
 = How do I disable Gravatar Hovercards? =
 
