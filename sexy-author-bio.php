@@ -5,12 +5,12 @@
  * @package   Sexy_Author_Bio
  * @author    Andy Forsberg <andyforsberg@gmail.com>
  * @license   GPL-2.0+
- * @copyright 2013 Penguin Initiatives
+ * @copyright 2014 Penguin Initiatives
  *
  * @wordpress-plugin
  * Plugin Name:       Sexy Author Bio
- * Description:       Adds a sexy, customizable author bio section below your posts.
- * Version:           1.0.31
+ * Description:       A WordPress author bio plugin that adds a sexy, custom about the author box below your posts for single and multiple authors.
+ * Version:           1.0.4
  * Author:            penguininitiatives
  * Author URI:        http://penguininitiatives.com/
  * Text Domain:       sexy-author-bio
@@ -77,6 +77,20 @@ add_action( 'edit_user_profile', 'extra_user_profile_fields' );
 function extra_user_profile_fields( $user ) { ?>
 <h3><?php _e("Author Signature Info", "blank"); ?></h3>
 
+<div style=\"display:none!important;\">
+
+<?php $settings = get_option( 'sexyauthorbio_settings' ); ?>
+
+<?php 
+if ( $settings['author_links'] == "link_to_author_page" ){ 
+	$sabhide = " style=\"display:none!important;\"";
+}else{
+	$sabhide = "";
+}
+?>
+
+</div>
+
 <table class="form-table">
 <tr>
 <th><label for="job-title"><?php _e("Job Title"); ?></label></th>
@@ -99,14 +113,14 @@ function extra_user_profile_fields( $user ) { ?>
 <span class="description"><?php _e("Please enter your company's website URL."); ?></span>
 </td>
 </tr>
-<tr>
+<tr<?php echo $sabhide; ?>>
 <th><label for="name-link"><?php _e("Name Link"); ?></label></th>
 <td>
 <input type="text" name="name-link" id="name-link" value="<?php echo esc_attr( get_the_author_meta( 'name-link', $user->ID ) ); ?>" class="regular-text" /><br />
 <span class="description"><?php _e("Please enter the URL you want your name to link to."); ?></span>
 </td>
 </tr>
-<tr>
+<tr<?php echo $sabhide; ?>>
 <th><label for="avatar-link"><?php _e("Avatar Link"); ?></label></th>
 <td>
 <input type="text" name="avatar-link" id="avatar-link" value="<?php echo esc_attr( get_the_author_meta( 'avatar-link', $user->ID ) ); ?>" class="regular-text" /><br />
@@ -145,3 +159,13 @@ function sexy_author_bio_shortcode( $atts ){
     }
 }
 add_shortcode( 'sexy_author_bio', 'sexy_author_bio_shortcode' );
+
+// Add settings link on plugin page
+function sexy_author_bio_settings_link($links) { 
+  $settings_link = '<a href="options-general.php?page=sexy-author-bio.php">Settings</a>'; 
+  array_unshift($links, $settings_link); 
+  return $links; 
+}
+ 
+$plugin = plugin_basename(__FILE__); 
+add_filter("plugin_action_links_$plugin", 'sexy_author_bio_settings_link' );

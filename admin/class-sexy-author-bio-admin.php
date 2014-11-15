@@ -5,7 +5,7 @@
  * @package   Sexy_Author_Bio
  * @author    Andy Forsberg <andyforsberg@gmail.com>
  * @license   GPL-2.0+
- * @copyright 2013 Penguin Initiatives
+ * @copyright 2014 Penguin Initiatives
  */
 
 /**
@@ -100,6 +100,18 @@ class Sexy_Author_Bio_Admin {
 					'posts' => __( 'Only in Posts', $this->plugin_slug ),
 					'home_posts' => __( 'Homepage and Posts', $this->plugin_slug ),
 					'none' => __( 'None', $this->plugin_slug ),
+				)
+			),
+			'author_links' => array(
+				'title' => __( 'Author Links', $this->plugin_slug ),
+				'default' => 'posts',
+				'type' => 'select',
+				'description' => sprintf( __( 'Control whether or not users can set avatar and name links.', $this->plugin_slug ) ),
+				'section' => 'settings',
+				'menu' => 'sexyauthorbio_settings',
+				'options' => array(
+					'users_set' => __( 'Users set the links', $this->plugin_slug ),
+					'link_to_author_page' => __( 'Author avatar and name link to author page', $this->plugin_slug ),
 				)
 			),
 			'link_target' => array(
@@ -222,6 +234,23 @@ class Sexy_Author_Bio_Admin {
 				'type' => 'color',
 				'section' => 'design',
 				'menu' => 'sexyauthorbio_settings'
+			),
+			'icon_set' => array(
+				'title' => __( 'Icon Set', $this->plugin_slug ),
+				'type' => 'section',
+				'menu' => 'sexyauthorbio_settings'
+			),
+			'pick_icon_set' => array(
+				'title' => __( 'Pick Icon Set', $this->plugin_slug ),
+				'default' => 'squares',
+				'type' => 'select',
+				'section' => 'icon_set',
+				'description' => __( '<h4>Squares</h4><img id="sig-twitter" src="'.plugins_url( $path, $plugin ).'/sexy-author-bio/public/assets/images/twitter.png" style="width:55px;"> <img id="sig-google" src="'.plugins_url( $path, $plugin ).'/sexy-author-bio/public/assets/images/google-plus.png" style="width:55px;"> <img id="sig-facebook" src="'.plugins_url( $path, $plugin ).'/sexy-author-bio/public/assets/images/facebook.png" style="width:55px;"> <img id="sig-linkedin" src="'.plugins_url( $path, $plugin ).'/sexy-author-bio/public/assets/images/linkedin.png" style="width:55px;"><h4>Circles</h4><img id="sig-twitter" src="'.plugins_url( $path, $plugin ).'/sexy-author-bio/public/assets/images/twitter2.png" style="width:55px;"> <img id="sig-google" src="'.plugins_url( $path, $plugin ).'/sexy-author-bio/public/assets/images/google-plus2.png" style="width:55px;"> <img id="sig-facebook" src="'.plugins_url( $path, $plugin ).'/sexy-author-bio/public/assets/images/facebook2.png" style="width:55px;"> <img id="sig-linkedin" src="'.plugins_url( $path, $plugin ).'/sexy-author-bio/public/assets/images/linkedin2.png" style="width:55px;">', $this->plugin_slug ),
+				'menu' => 'sexyauthorbio_settings',
+				'options' => array(
+					'squares' => __( 'Squares', $this->plugin_slug ),
+					'circles' => __( 'Circles', $this->plugin_slug )
+				)
 			),
 		);
 

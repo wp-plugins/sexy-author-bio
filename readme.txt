@@ -1,21 +1,22 @@
 === Sexy Author Bio ===
 Contributors: penguininitiatives
-Tags: author, bio, biography, social, google plus, twitter
+Tags: author bio, author bio plugin, authors plugin, plugin author, author biography, about the author plugin, signature, signature plugin, plugin author bio, author box, author description, author profile, author profile fields, author social icons, post author, profile fields, responsive author box, user profile, rel author
 Requires at least: 3.8
 Tested up to: 4.0
-Stable tag: 1.0.31
+Stable tag: 1.0.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Adds a sexy, customizable author bio section below your posts.
+A WordPress author bio plugin that adds a sexy, custom about the author box below your posts for single and multiple authors.
 
 == Description ==
 
-Adds a sexy, customizable author bio section below your posts.
+A WordPress author bio plugin that supports single and multiple authors. It offers tons of options to customize the box after WordPress posts about the author and most importantly makes it sexy lookin', rather than dull and bland. The author bio box is responsive and includes two sexy icon sets to choose from: squares or circles.
 
 = Credits =
 
-* Initial idea by [Gustavo Freitas](http://gfsolucoes.net/).
+* Plugin built and maintained by [@AndyForsberg](https://twitter.com/andyforsberg) of [Penguin Initiatives](http://penguininitiatives.com/).
+* The included [Geekly](https://www.behance.net/gallery/Geekly-40-Flat-Icons/10357351) circular social icons are complements of [@Abdo_Ba](https://twitter.com/Abdo_Ba).
 * This is a derivative work of the [Author Bio Box WordPress Plugin](http://wordpress.org/plugins/author-bio-box/), which was authored by [Claudio Sanches](http://profiles.wordpress.org/claudiosanches/).
 
 = Further Reading =
@@ -71,6 +72,17 @@ Use this shortcode:
 * This plugin is released under a GPL license.
 
 == Changelog ==
+
+= 1.0.4 11/15/2014 =
+* Added Author Links options: "Users set the link" or "Author avatar and name link to author page"
+* Added Circle Social Icons Set
+* Added rel="author"
+* Updated Screenshots
+* Updated Plugin Description and Tags
+
+= 1.0.31 9/29/2014 =
+* Added Shortcode
+* Added Screenshots
 
 = 1.0.3 6/11/2014 =
 
