@@ -3,7 +3,7 @@ Contributors: penguininitiatives
 Tags: author bio, author bio plugin, authors plugin, plugin author, author biography, about the author plugin, signature, signature plugin, plugin author bio, author box, author description, author profile, author profile fields, author social icons, post author, profile fields, responsive author box, user profile, rel author
 Requires at least: 3.8
 Tested up to: 4.0
-Stable tag: 1.0.4
+Stable tag: 1.0.41
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -73,10 +73,14 @@ Use this shortcode:
 
 == Changelog ==
 
+= 1.0.4.1 11/15/2014 =
+* Added help sidebar in Sexy Author Bio Admin Settings page
+
 = 1.0.4 11/15/2014 =
 * Added Author Links options: "Users set the link" or "Author avatar and name link to author page"
 * Added Circle Social Icons Set
 * Added rel="author"
+* Added Settings link in the WordPress Installed Plugins page
 * Updated Screenshots
 * Updated Plugin Description and Tags
 

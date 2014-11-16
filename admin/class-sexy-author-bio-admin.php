@@ -255,6 +255,7 @@ class Sexy_Author_Bio_Admin {
 		);
 
 		return $settings;
+
 	}
 
 	/**
