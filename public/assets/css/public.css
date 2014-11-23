@@ -1,9 +1,6 @@
-
 #sexy-author-bio{
-padding: 10px 10px 0 10px;
+padding: 10px;
 margin: 0px;
-margin-top: 20px;
-font-size: 0.73em;
 }
 #sexy-author-bio:after{
 content:"";
@@ -13,63 +10,39 @@ clear:both
 #sexy-author-bio *{
 margin:0;padding:0
 }
-#sexy-author-bio h3{
-padding: 25px 0px;
-font-size: 62px;
-font-weight: 600;
-line-height: 1em;
-text-transform: uppercase;
+#sab-author{
+padding: 0;
+margin: 0;
+margin-bottom: 10px;
 display: block;
-margin: -15px 0 -15px 0;
 clear: none;
 }
-#sexy-author-bio h3 a{
-text-decoration: none;
-}
-#sexy-author-bio h3 a:hover{
-text-decoration: underline;
-}
-#sexy-author-bio h4{
+#sab-title-company{
 clear: none;
-font-size: 16px;
-letter-spacing: 0.59px;
-font-weight: 600;
-font-style: normal;
-text-transform: uppercase;
-line-height: 1em;
-padding: .5em 0 .5em 0;
-margin-bottom: 0;
+display: inline-block;
 }
-#sexy-author-bio h4 a{
+#sab-author a, #sab-title-company a{
 text-decoration: none;
 }
-#sexy-author-bio h4 a:hover{
+#sab-author a:hover, #sab-title-company a:hover{
 text-decoration: underline;
 }
-#sexy-author-bio .bio-description{
-margin-bottom:10px;
+#sab-description{
 font-size: 14px;
-line-height: 1.3em;
 font-weight: 300;
-font-family: Helvetica, sans-serif;
 }
-#sexy-author-bio p{
-margin-bottom:5px;
-}
-#sexy-author-bio .bio-gravatar{
-float:left;
-}
-#sexy-author-bio .bio-gravatar img{
+#sab-gravatar{
 float: left;
-margin-right: 10px;
+padding-top: 5px;
+}
+#sab-gravatar img{
+float: left;
 border: solid 1px;
-margin-bottom: 5px;
-margin-top: 2px;
 background-color: #FFF;
 }
 #sig-twitter, #sig-google, #sig-facebook, #sig-linkedin {
-height:55px;
-width:55px;
+height:54px;
+width:54px;
 float:right;
 border:0;
 margin-left:2px;
@@ -78,27 +51,22 @@ padding:0;
 #sexy-author-bio .bio-icon{filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=100);opacity:1;-webkit-transition:all 0.4s ease;-moz-transition:all 0.4s ease;-o-transition:all 0.4s ease;transition:all 0.4s ease;background-color:transparent;background-image:url("../images/sprite.png");background-repeat:no-repeat;display:inline-block;margin-right:3px;height:16px;width:16px}
 #sexy-author-bio .bio-icon:hover{filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=70);opacity:0.7}
 @media only screen and (max-width: 767px) { 
-	#sexy-author-bio h3 {
+	#sab-author {
     width: 100%;
     padding: 0;
-    line-height: 1em;
     margin: 0;
-    line-height: .7em;
     }
-    #sexy-author-bio h3 a {
+    #sab-author a {
     width: 100%;
-    font-size: 0.7em;
     }
-    #sexy-author-bio h4 {
+    #sab-title-company {
     clear: both;
-    line-height: 1.3em;
     }
     #sig-google, #sig-twitter, #sig-facebook, #sig-linkedin {
-    margin: 0 0 10px 2px;
     position: static;
     float: none;
     }
-    .bio-gravatar img{
+    #sab-gravatar {
     display: none;
     }
 }

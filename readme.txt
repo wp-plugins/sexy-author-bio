@@ -2,8 +2,8 @@
 Contributors: penguininitiatives
 Tags: author bio, author bio plugin, authors plugin, plugin author, author biography, about the author plugin, signature, signature plugin, plugin author bio, author box, author description, author profile, author profile fields, author social icons, post author, profile fields, responsive author box, user profile, rel author
 Requires at least: 3.8
-Tested up to: 4.0
-Stable tag: 1.0.41
+Tested up to: 4.0.1
+Stable tag: 1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -72,6 +72,14 @@ Use this shortcode:
 * This plugin is released under a GPL license.
 
 == Changelog ==
+
+= 1.1 11/23/2014 =
+* Tons of CSS & HTML cleanup
+* Added option to customize "Job Title Company Separator"
+* Added fields to easily customize CSS in the plugin: Global Custom CSS, Desktop 1,200px +, IPAD LANDSCAPE 1019 - 1199px, IPAD PORTRAIT 768 - 1018px & SMARTPHONES
+0 - 767px.
+* Fixed issue with shortcode not working in widgets & listed shortcode in admin settings page
+* Added basic Sexy Author Bio widget
 
 = 1.0.4.1 11/15/2014 =
 * Added help sidebar in Sexy Author Bio Admin Settings page

@@ -55,6 +55,7 @@ class Sexy_Author_Bio_Admin {
 
 		// Init plugin options form.
 		add_action( 'admin_init', array( $this, 'plugin_settings' ) );
+
 	}
 
 	/**
@@ -93,7 +94,7 @@ class Sexy_Author_Bio_Admin {
 				'title' => __( 'Display in', $this->plugin_slug ),
 				'default' => 'posts',
 				'type' => 'select',
-				'description' => sprintf( __( 'You can display the box directly into your theme using: %s', $this->plugin_slug ), '<br /><code>&lt;?php if ( function_exists( \'get_Sexy_Author_Bio\' ) ) echo get_Sexy_Author_Bio(); ?&gt;</code>' ),
+				'description' => sprintf( __( 'You can display the box directly into your theme using: %s', $this->plugin_slug ), '<br /><code>&lt;?php if ( function_exists( \'get_Sexy_Author_Bio\' ) ) echo get_Sexy_Author_Bio(); ?&gt;</code><br />You can also use this shortcode:<br /><code>[sexy_author_bio]</code>' ),
 				'section' => 'settings',
 				'menu' => 'sexyauthorbio_settings',
 				'options' => array(
@@ -133,7 +134,7 @@ class Sexy_Author_Bio_Admin {
 			),
 			'gravatar' => array(
 				'title' => __( 'Gravatar size', $this->plugin_slug ),
-				'default' => 70,
+				'default' => 100,
 				'type' => 'text',
 				'description' => sprintf( __( 'Set the Gravatar size (only integers). To configure the profile picture of the author you need to register in %s.', $this->plugin_slug ), '<a href="gravatar.com">gravatar.com</a>' ),
 				'section' => 'design',
@@ -141,7 +142,7 @@ class Sexy_Author_Bio_Admin {
 			),
 			'author_name_font_size' => array(
 				'title' => __( 'Author Name Font Size', $this->plugin_slug ),
-				'default' => 62,
+				'default' => 27,
 				'type' => 'text',
 				'description' => sprintf( __( 'Set the author name font size', $this->plugin_slug ) ),
 				'section' => 'design',
@@ -178,6 +179,14 @@ class Sexy_Author_Bio_Admin {
 					'none' => __( 'None', $this->plugin_slug ),
 					'underline' => __( 'Underline', $this->plugin_slug )
 				)
+			),
+			'separator' => array(
+				'title' => __( 'Job Title Company Separator', $this->plugin_slug ),
+				'default' => 'at',
+				'type' => 'text',
+				'description' => sprintf( __( 'Set the text to separate job title and company', $this->plugin_slug ) ),
+				'section' => 'design',
+				'menu' => 'sexyauthorbio_settings'
 			),
 			'background_color' => array(
 				'title' => __( 'Background color', $this->plugin_slug ),
@@ -251,6 +260,56 @@ class Sexy_Author_Bio_Admin {
 					'squares' => __( 'Squares', $this->plugin_slug ),
 					'circles' => __( 'Circles', $this->plugin_slug )
 				)
+			),
+			'custom_css' => array(
+				'title' => __( 'Custom CSS', $this->plugin_slug ),
+				'type' => 'section',
+				'menu' => 'sexyauthorbio_settings'
+			),
+			'custom_css_default' => array(
+				'title' => __( 'YOUR Custom CSS', $this->plugin_slug ),
+				'default' => '',
+				'type' => 'textarea',
+				'section' => 'custom_css',
+				'description' => __( 'Paste your custom CSS here.', $this->plugin_slug ),
+				'menu' => 'sexyauthorbio_settings'
+			),
+			'responsive_css' => array(
+				'title' => __( 'Responsive CSS', $this->plugin_slug ),
+				'type' => 'section',
+				'menu' => 'sexyauthorbio_settings'
+			),
+			'custom_css_desktop' => array(
+				'title' => __( 'DESKTOP<br />1,200px +', $this->plugin_slug ),
+				'default' => '',
+				'type' => 'textarea',
+				'section' => 'responsive_css',
+				'description' => __( 'Paste your custom CSS for DESKTOP 1,200px + here.', $this->plugin_slug ),
+				'menu' => 'sexyauthorbio_settings'
+			),
+			'custom_css_ipad_landscape' => array(
+				'title' => __( 'IPAD LANDSCAPE<br />1019 - 1199px', $this->plugin_slug ),
+				'default' => '',
+				'type' => 'textarea',
+				'section' => 'responsive_css',
+				'description' => __( 'Paste your custom CSS for IPAD LANDSCAPE 1019 - 1199px here.', $this->plugin_slug ),
+				'menu' => 'sexyauthorbio_settings'
+			),
+			'custom_css_ipad_portrait' => array(
+				'title' => __( 'IPAD PORTRAIT<br />768 - 1018px', $this->plugin_slug ),
+				'default' => '',
+				'type' => 'textarea',
+				'section' => 'responsive_css',
+				'description' => __( 'Paste your custom CSS for IPAD PORTRAIT 768 - 1018px here.', $this->plugin_slug ),
+				'menu' => 'sexyauthorbio_settings'
+			),
+			'custom_css_smartphones' => array(
+				'title' => __( 'SMARTPHONES<br />0 - 767px', $this->plugin_slug ),
+				'default' => '',
+				'type' => 'textarea',
+				'section' => 'responsive_css',
+				'description' => __( 'Paste your custom CSS for SMARTPHONES 0 - 767px here.', $this->plugin_slug ),
+				'menu' => 'sexyauthorbio_settings'
 			),
 		);
 
@@ -364,6 +423,36 @@ class Sexy_Author_Bio_Admin {
 						)
 					);
 					break;
+				case 'textarea':
+					add_settings_field(
+						$key,
+						$value['title'],
+						array( $this, 'textarea_element_callback' ),
+						$value['menu'],
+						$value['section'],
+						array(
+							'menu' => $value['menu'],
+							'id' => $key,
+							'class' => 'large-text',
+							'description' => isset( $value['description'] ) ? $value['description'] : ''
+						)
+					);
+					break;
+				case 'checkbox':
+					add_settings_field(
+						$key,
+						$value['title'],
+						array( $this, 'checkbox_element_callback' ),
+						$value['menu'],
+						$value['section'],
+						array(
+							'menu' => $value['menu'],
+							'id' => $key,
+							'class' => 'checkbox',
+							'description' => isset( $value['description'] ) ? $value['description'] : ''
+						)
+					);
+					break;
 				case 'select':
 					add_settings_field(
 						$key,
@@ -427,6 +516,70 @@ class Sexy_Author_Bio_Admin {
 		}
 
 		$html = sprintf( '<input style="width:200px;" type="text" id="%1$s" name="%2$s[%1$s]" value="%3$s" class="%4$s" />', $id, $menu, $current, $class );
+
+		// Displays option description.
+		if ( isset( $args['description'] ) ) {
+			$html .= sprintf( '<p class="description">%s</p>', $args['description'] );
+		}
+
+		echo $html;
+	}
+
+	/**
+	 * Text Area element fallback.
+	 *
+	 * @since  1.0.0
+	 *
+	 * @param  array $args Field arguments.
+	 *
+	 * @return string      Text field.
+	 */
+	public function textarea_element_callback( $args ) {
+		$menu  = $args['menu'];
+		$id    = $args['id'];
+		$class = isset( $args['class'] ) ? $args['class'] : 'large-text';
+
+		$options = get_option( $menu );
+
+		if ( isset( $options[ $id ] ) ) {
+			$current = $options[ $id ];
+		} else {
+			$current = isset( $args['default'] ) ? $args['default'] : '';
+		}
+
+		$html = sprintf( '<textarea style="width:550px;height: 175px;" type="text" id="%1$s" name="%2$s[%1$s]" class="%4$s" />%3$s</textarea>', $id, $menu, $current, $class );
+
+		// Displays option description.
+		if ( isset( $args['description'] ) ) {
+			$html .= sprintf( '<p class="description">%s</p>', $args['description'] );
+		}
+
+		echo $html;
+	}
+
+	/**
+	 * Text element fallback.
+	 *
+	 * @since  1.0.0
+	 *
+	 * @param  array $args Field arguments.
+	 *
+	 * @return string      Text field.
+	 */
+	public function checkbox_element_callback( $args ) {
+		$menu  = $args['menu'];
+		$id    = $args['id'];
+		$class = isset( $args['class'] ) ? $args['class'] : 'checkbox';
+
+		$options = get_option( $menu );
+
+		if ( isset( $options[ $id ] ) ) {
+			$current = $options[ $id ];
+		} else {
+			$current = isset( $args['default'] ) ? $args['default'] : '';
+		}
+
+		$html = sprintf( '<input type="checkbox" id="%1$s" name="%2$s[%1$s]" value="%3$s" class="%4$s" />', $id, $menu, $current, $class );
 
 		// Displays option description.
 		if ( isset( $args['description'] ) ) {

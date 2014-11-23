@@ -67,6 +67,8 @@ class Sexy_Author_Bio {
 
 		// Display the box.
 		add_filter( 'the_content', array( $this, 'display' ), 9999 );
+
+		add_action('wp_head', array( $this, 'hook_css' ) );
 	}
 
 	/**
@@ -229,10 +231,11 @@ class Sexy_Author_Bio {
 		$options = array(
 			'display' => 'posts',
 			'gravatar' => 100,
-			'author_name_font_size' => 62,
+			'author_name_font_size' => 27,
 			'author_name_font' => '',
 			'author_name_capitalization' => 'uppercase',
 			'author_name_decoration' => 'none',
+			'separator' => 'at',
 			'background_color' => '#333333',
 			'highlight_color' => '#0088cc',
 			'text_color' => '#ffffff',
@@ -334,16 +337,6 @@ class Sexy_Author_Bio {
 			'linkedin' => get_the_author_meta( 'linkedin' )
 		);
 
-		// Set the styes.
-		$styles = sprintf(
-			'background: %1$s; border-top: %2$spx %3$s %4$s; border-bottom: %2$spx %3$s %4$s; color: %5$s',
-			$settings['background_color'],
-			$settings['border_size'],
-			$settings['border_style'],
-			$settings['border_color'],
-			$settings['text_color']
-		);
-
 		$author = get_query_var('author');
 
 		if ( $settings['author_links'] == "link_to_author_page" ){ 
@@ -356,31 +349,31 @@ class Sexy_Author_Bio {
 
 		if ( get_the_author_meta('hide-signature') ) { $hidden = ";display:none!important;"; }else{ $hidden = ""; }
 
-		$html = '<div id="sexy-author-bio" style="' . $styles . $hidden . '">';
+		$html = '<div id="sexy-author-bio">';
 
 		if ( $settings['pick_icon_set'] == "circles" ){ $iconset = "2"; }else{ $iconset = ""; }
 
 		if ( $social['twitter'] ){
-			$twitter = '<a href="' . $social['twitter'] . '" target="' . $settings['link_target'] . '"><img id="sig-twitter" src="'.plugins_url( $path, $plugin ).'/sexy-author-bio/public/assets/images/twitter'.$iconset.'.png"></a>';
+			$twitter = '<a id="sab-twitter" href="' . $social['twitter'] . '" target="' . $settings['link_target'] . '"><img id="sig-twitter" src="'.plugins_url( $path, $plugin ).'/sexy-author-bio/public/assets/images/twitter'.$iconset.'.png"></a>';
 		}
 
 		if ( $social['googleplus'] ){
-			$googleplus = '<a href="' . $social['googleplus'] . '" target="' . $settings['link_target'] . '"><img id="sig-google" src="'.plugins_url( $path, $plugin ).'/sexy-author-bio/public/assets/images/google-plus'.$iconset.'.png"></a>';
+			$googleplus = '<a id="sab-googleplus" href="' . $social['googleplus'] . '" target="' . $settings['link_target'] . '"><img id="sig-google" src="'.plugins_url( $path, $plugin ).'/sexy-author-bio/public/assets/images/google-plus'.$iconset.'.png"></a>';
 		}
 
 		if ( $social['facebook'] ){
-			$facebook = '<a href="' . $social['facebook'] . '" target="' . $settings['link_target'] . '"><img id="sig-facebook" src="'.plugins_url( $path, $plugin ).'/sexy-author-bio/public/assets/images/facebook'.$iconset.'.png"></a>';
+			$facebook = '<a id="sab-facebook" href="' . $social['facebook'] . '" target="' . $settings['link_target'] . '"><img id="sig-facebook" src="'.plugins_url( $path, $plugin ).'/sexy-author-bio/public/assets/images/facebook'.$iconset.'.png"></a>';
 		}
 
 		if ( $social['linkedin'] ){
-			$linkedin = '<a href="' . $social['linkedin'] . '" target="' . $settings['link_target'] . '"><img id="sig-linkedin" src="'.plugins_url( $path, $plugin ).'/sexy-author-bio/public/assets/images/linkedin'.$iconset.'.png"></a>';
+			$linkedin = '<a id="sab-linkedin" href="' . $social['linkedin'] . '" target="' . $settings['link_target'] . '"><img id="sig-linkedin" src="'.plugins_url( $path, $plugin ).'/sexy-author-bio/public/assets/images/linkedin'.$iconset.'.png"></a>';
 		}
 
 		if ( get_the_author_meta('job-title') && get_the_author_meta('company') && get_the_author_meta('company-website-url') ) {
-			$titleline = '<h4 style="color:' . $settings['title_color'] . ';">' . get_the_author_meta('job-title') . ' at <a href="' . get_the_author_meta('company-website-url') . '" target="' . $settings['link_target'] . '" style="color:' . $settings['highlight_color'] . ';">' . get_the_author_meta('company') . '</a></h4>';
+			$titleline = '<div id="sab-title-company"><span id="sab-jobtitle">' . get_the_author_meta('job-title') . '</span><span id="sab-separator"> ' . $settings['separator'] . ' </span><span id="sab-company"><a href="' . get_the_author_meta('company-website-url') . '" target="' . $settings['link_target'] . '" style="color:' . $settings['highlight_color'] . ';">' . get_the_author_meta('company') . '</a></span></div>';
 		}
 
-		$html .= '<div>'.$linkedin.''.$facebook.''.$twitter.''.$googleplus.'</div><h3 style="font-family:' . $settings['author_name_font'] . '!important;font-size: ' . $settings['author_name_font_size'] . 'px!important;"><a rel="author" style="text-decoration:' . $settings['author_name_decoration'] . '!important;text-transform:' . $settings['author_name_capitalization'] . '!important;color: ' . $settings['highlight_color'] . ';" href="' . $author_name_link . '" title="' . esc_attr( __( '', self::get_plugin_slug() ) . '' . get_the_author() ) .'" target="' . $settings['link_target'] . '">' . get_the_author() . '</a></h3><a style="color: ' . $settings['highlight_color'] . ';" href="' . $author_avatar_link . '" target="' . $settings['link_target'] . '"><div class="bio-gravatar">' . get_avatar( get_the_author_meta('ID'), $gravatar ) . '</div></a>'.$titleline.'<p class="bio-description">' . apply_filters( 'sexyauthorbio_author_description', get_the_author_meta( 'description' ) ) . '</p>';
+		$html .= '<div id="sab-social-wrapper">'.$linkedin.''.$facebook.''.$twitter.''.$googleplus.'</div><div id="sab-author"><a rel="author" href="' . $author_name_link . '" title="' . esc_attr( __( '', self::get_plugin_slug() ) . '' . get_the_author() ) .'" target="' . $settings['link_target'] . '">' . get_the_author() . '</a></div><div id="sab-gravatar"><a href="' . $author_avatar_link . '" target="' . $settings['link_target'] . '">' . get_avatar( get_the_author_meta('ID'), $gravatar ) . '</a></div>'.$titleline.'<div id="sab-description">' . apply_filters( 'sexyauthorbio_author_description', get_the_author_meta( 'description' ) ) . '</div>';
 		$html .= '</div>';
 
 		return $html;
@@ -404,6 +397,52 @@ class Sexy_Author_Bio {
 		}
 
 		return $content;
+	}
+
+	public function hook_css() {
+		// Get the settings.
+		$settings = get_option( 'sexyauthorbio_settings' );
+
+			// Set the styes.
+			$styles = sprintf(
+				'background: %1$s; border-top: %2$spx %3$s %4$s; border-bottom: %2$spx %3$s %4$s; color: %5$s',
+				$settings['background_color'],
+				$settings['border_size'],
+				$settings['border_style'],
+				$settings['border_color'],
+				$settings['text_color']
+			);
+
+			$customcss = $settings['custom_css_default'];
+			$customcssdesktop = $settings['custom_css_desktop'];
+			$customcssipadlandscape = $settings['custom_css_ipad_landscape'];
+			$customcssipadportrait = $settings['custom_css_ipad_portrait'];
+			$customcsssmartphones = $settings['custom_css_smartphones'];
+			$output = '<style id="sexy-author-bio-css" type="text/css" media="screen">
+					  #sexy-author-bio { ' . $styles . $hidden . ' }
+					  #sab-author { font-family:' . $settings['author_name_font'] . '; font-size: ' . $settings['author_name_font_size'] . 'px; line-height: ' . $settings['author_name_font_size'] . 'px; }
+					  #sab-gravatar { width: ' . $settings['gravatar'] . 'px; margin: 0 10px 0 0; }
+					  #sab-gravatar a { color: ' . $settings['highlight_color'] . '; }
+					  #sab-author a { margin-right:10px; text-decoration:' . $settings['author_name_decoration'] . '; text-transform:' . $settings['author_name_capitalization'] . '; color: ' . $settings['highlight_color'] . '; }
+					  #sig-twitter, #sig-google, #sig-facebook, #sig-linkedin { margin-bottom: 10px; }
+					  #sab-title-company { color:' . $settings['title_color'] . '; }
+					  '.$customcss.'
+					  @media (min-width: 1200px) {
+					  '.$customcssdesktop.'
+					  }
+					  @media (min-width: 1019px) and (max-width: 1199px) {
+					  '.$customcssipadlandscape.'
+					  }
+					  @media (min-width: 768px) and (max-width: 1018px) {
+					  '.$customcssipadportrait.'
+					  }
+					  @media (max-width: 767px) {
+					  '.$customcsssmartphones.'
+					  }
+					  </style>';
+
+	echo $output;
+
 	}
 
 }

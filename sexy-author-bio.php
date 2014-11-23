@@ -10,7 +10,7 @@
  * @wordpress-plugin
  * Plugin Name:       Sexy Author Bio
  * Description:       A WordPress author bio plugin that adds a sexy, custom about the author box below your posts for single and multiple authors.
- * Version:           1.0.41
+ * Version:           1.1
  * Author:            penguininitiatives
  * Author URI:        http://penguininitiatives.com/
  * Text Domain:       sexy-author-bio
@@ -159,6 +159,7 @@ function sexy_author_bio_shortcode( $atts ){
     }
 }
 add_shortcode( 'sexy_author_bio', 'sexy_author_bio_shortcode' );
+add_filter('widget_text', 'do_shortcode');
 
 // Add settings link on plugin page
 function sexy_author_bio_settings_link($links) { 
@@ -169,3 +170,81 @@ function sexy_author_bio_settings_link($links) {
  
 $plugin = plugin_basename(__FILE__); 
 add_filter("plugin_action_links_$plugin", 'sexy_author_bio_settings_link' );
+
+/**
+ * Adds Sexy_Author_Bio_Widget widget.
+ */
+class Sexy_Author_Bio_Widget extends WP_Widget {
+
+	/**
+	 * Register widget with WordPress.
+	 */
+	function __construct() {
+		parent::__construct(
+			'sexy_author_bio_widget', // Base ID
+			__( 'Sexy Author Bio', 'text_domain' ), // Name
+			array( 'description' => __( 'The Sexy Author Bio Widget', 'text_domain' ), ) // Args
+		);
+	}
+
+	/**
+	 * Front-end display of widget.
+	 *
+	 * @see WP_Widget::widget()
+	 *
+	 * @param array $args     Widget arguments.
+	 * @param array $instance Saved values from database.
+	 */
+	public function widget( $args, $instance ) {
+	
+     	echo $args['before_widget'];
+		if ( ! empty( $instance['title'] ) ) {
+			echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ). $args['after_title'];
+		}
+		if ( function_exists( 'get_Sexy_Author_Bio' ) ){
+			echo __( get_Sexy_Author_Bio() , 'text_domain' );
+		}
+		echo $args['after_widget'];
+	}
+
+	/**
+	 * Back-end widget form.
+	 *
+	 * @see WP_Widget::form()
+	 *
+	 * @param array $instance Previously saved values from database.
+	 */
+	public function form( $instance ) {
+     	        $title = ! empty( $instance['title'] ) ? $instance['title'] : __( '', 'text_domain' );
+		?>
+		<p>
+		<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label> 
+		<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
+		</p>
+		<?php 
+	}
+
+	/**
+	 * Sanitize widget form values as they are saved.
+	 *
+	 * @see WP_Widget::update()
+	 *
+	 * @param array $new_instance Values just sent to be saved.
+	 * @param array $old_instance Previously saved values from database.
+	 *
+	 * @return array Updated safe values to be saved.
+	 */
+	public function update( $new_instance, $old_instance ) {
+		$instance = array();
+		$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
+
+		return $instance;
+	}
+
+} // class Sexy_Author_Bio_Widget
+
+// register Sexy_Author_Bio_Widget widget
+function register_sexy_author_bio_widget() {
+    register_widget( 'Sexy_Author_Bio_Widget' );
+}
+add_action( 'widgets_init', 'register_sexy_author_bio_widget' );
