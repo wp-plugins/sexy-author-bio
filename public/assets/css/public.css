@@ -1,0 +1,69 @@
+#sexy-author-bio{
+padding: 10px;
+margin: 0px;
+}
+#sexy-author-bio:after{
+content:"";
+display:table;
+clear:both
+}
+#sab-author{
+padding: 0;
+margin: 0;
+margin-bottom: 10px;
+display: block;
+clear: none;
+}
+#sab-title-company{
+clear: none;
+display: inline-block;
+}
+#sab-author a, #sab-title-company a{
+text-decoration: none;
+}
+#sab-author a:hover, #sab-title-company a:hover{
+text-decoration: underline;
+}
+#sab-description{
+font-size: 14px;
+font-weight: 300;
+}
+#sab-gravatar{
+float: left;
+padding-top: 5px;
+}
+#sab-gravatar img{
+float: left;
+border: solid 1px;
+background-color: #FFF;
+}
+#sig-twitter, #sig-google, #sig-facebook, #sig-linkedin {
+height:54px;
+width:54px;
+float:right;
+border:0;
+margin-left:2px;
+padding:0;
+}
+#sexy-author-bio .bio-icon{filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=100);opacity:1;-webkit-transition:all 0.4s ease;-moz-transition:all 0.4s ease;-o-transition:all 0.4s ease;transition:all 0.4s ease;background-color:transparent;background-image:url("../images/sprite.png");background-repeat:no-repeat;display:inline-block;margin-right:3px;height:16px;width:16px}
+#sexy-author-bio .bio-icon:hover{filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=70);opacity:0.7}
+@media only screen and (max-width: 767px) { 
+	#sab-author {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    }
+    #sab-author a {
+    width: 100%;
+    }
+    #sab-title-company {
+    clear: both;
+    }
+    #sig-google, #sig-twitter, #sig-facebook, #sig-linkedin {
+    position: static;
+    float: none;
+    }
+    #sab-gravatar {
+    display: none;
+    }
+}
