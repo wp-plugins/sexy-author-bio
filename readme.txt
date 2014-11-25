@@ -73,6 +73,9 @@ Use this shortcode:
 
 == Changelog ==
 
+= 1.1.1 11/24/2014 =
+* Margin CSS Fix
+
 = 1.1 11/23/2014 =
 * Tons of CSS & HTML cleanup
 * Added option to customize "Job Title Company Separator"
