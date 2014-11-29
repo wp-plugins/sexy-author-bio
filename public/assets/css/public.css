@@ -37,12 +37,12 @@ float: left;
 border: solid 1px;
 background-color: #FFF;
 }
-#sig-twitter, #sig-google, #sig-facebook, #sig-linkedin {
-height:54px;
-width:54px;
+/*#sab-social-wrapper {
+display:flex;
+}*/
+[id^=sig-] {
 float:right;
 border:0;
-margin-left:2px;
 padding:0;
 }
 #sexy-author-bio .bio-icon{filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=100);opacity:1;-webkit-transition:all 0.4s ease;-moz-transition:all 0.4s ease;-o-transition:all 0.4s ease;transition:all 0.4s ease;background-color:transparent;background-image:url("../images/sprite.png");background-repeat:no-repeat;display:inline-block;margin-right:3px;height:16px;width:16px}

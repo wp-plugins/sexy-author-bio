@@ -10,7 +10,7 @@
  * @wordpress-plugin
  * Plugin Name:       Sexy Author Bio
  * Description:       A WordPress author bio plugin that adds a sexy, custom about the author box below your posts for single and multiple authors.
- * Version:           1.1.1
+ * Version:           1.2
  * Author:            penguininitiatives
  * Author URI:        http://penguininitiatives.com/
  * Text Domain:       sexy-author-bio
@@ -134,6 +134,13 @@ if ( $settings['author_links'] == "link_to_author_page" ){
 <span class="description"><?php _e("Enter any text above if you want the signature hidden for this user. Leave it blank if you want the signature shown for this user."); ?></span>
 </td>
 </tr>
+<tr>
+<th><label for="avatar-url"><?php _e("Custom Avatar URL"); ?></label></th>
+<td>
+<input type="text" name="avatar-url" id="avatar-url" value="<?php echo esc_attr( get_the_author_meta( 'avatar-url', $user->ID ) ); ?>" class="regular-text" /><br />
+<span class="description"><?php _e("If you would prefer to use a custom avatar image instead of your Gravatar, enter the URL of the custom avatar image here."); ?></span>
+</td>
+</tr>
 </table>
 <?php }
 
@@ -150,6 +157,7 @@ update_user_meta( $user_id, 'company-website-url', $_POST['company-website-url']
 update_user_meta( $user_id, 'name-link', $_POST['name-link'] );
 update_user_meta( $user_id, 'avatar-link', $_POST['avatar-link'] );
 update_user_meta( $user_id, 'hide-signature', $_POST['hide-signature'] );
+update_user_meta( $user_id, 'avatar-url', $_POST['avatar-url'] );
 }
 
 // Enable Sexy Author Bio Shortcode

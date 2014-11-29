@@ -1,9 +1,9 @@
 === Sexy Author Bio ===
 Contributors: penguininitiatives
-Tags: author bio, author bio plugin, authors plugin, plugin author, author biography, about the author plugin, signature, signature plugin, plugin author bio, author box, author description, author profile, author profile fields, author social icons, post author, profile fields, responsive author box, user profile, rel author
+Tags: author bio, author bio plugin, authors plugin, plugin author, author biography, about the author plugin, signature, signature plugin, plugin author bio, author box, author description, author profile, author profile fields, author social icons, post author, profile fields, responsive author box, user profile, rel author, behance, blogger, delicious, deviantart, dribbble, facebook, flickr, github, google+, google plus, instagram, linkedin, myspace, pinterest, RSS, stumbleupon, tumblr, twitter, vimeo, wordpress, yahoo, youtube
 Requires at least: 3.8
 Tested up to: 4.0.1
-Stable tag: 1.1.1
+Stable tag: 1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,6 +12,8 @@ A WordPress author bio plugin that adds a sexy, custom about the author box belo
 == Description ==
 
 A WordPress author bio plugin that supports single and multiple authors. It offers tons of options to customize the box after WordPress posts about the author and most importantly makes it sexy lookin', rather than dull and bland. The author bio box is responsive and includes two sexy icon sets to choose from: squares or circles.
+
+Five social icon sets to choose from, with support for all the following social networks: Behance, Blogger, Delicious, DeviantArt, Dribbble, Facebook, Flickr, GitHub, Google+, Instagram, LinkedIn, MySpace, Pinterest, RSS, StumbleUpon, Tumblr, Twitter, Vimeo, WordPress, Yahoo! & YouTube.
 
 = Credits =
 
@@ -31,7 +33,7 @@ A WordPress author bio plugin that supports single and multiple authors. It offe
 * Upload plugin files to your plugins folder, or install using WordPress built-in Add New Plugin installer;
 * Activate the plugin;
 * Navigate to Settings -> Sexy Author Bio in order to customize any settings.
-* Navigate to Users -> Your Profile and fill in the Author Signature Info fields, Facebook, Twitter, Google Plus, LinkedIn and Biographical Info fields. Do this for all authors on your website that have made posts (if you want this information to show up in their Sexy Author Bio).
+* Navigate to Users -> Your Profile and fill in the Contact Info, About Yourself & Author Signature Info fields. Do this for all authors on your website that have made posts (if you want this information to show up in their Sexy Author Bio).
 
 = Add the box directly =
 
@@ -72,6 +74,13 @@ Use this shortcode:
 * This plugin is released under a GPL license.
 
 == Changelog ==
+
+= 1.2 11/24/2014 =
+* Added five new social icon sets to choose from, all with icons for all the following social networks: Behance, Blogger, Delicious, DeviantArt, Dribbble, Facebook, Flickr, GitHub, Google+, Instagram, LinkedIn, MySpace, Pinterest, RSS, StumbleUpon, Tumblr, Twitter, Vimeo, WordPress, Yahoo! & YouTube
+* Added options to set icon size and icon spacing for social icons
+* Added option to set border size for top, right, bottom and left separately
+* Added option for users to set a custom Avatar URL
+* Added Author's name as CSS Class to make it easy to use CSS to customize Sexy Author Bio for specific authors
 
 = 1.1.1 11/24/2014 =
 * Margin CSS Fix

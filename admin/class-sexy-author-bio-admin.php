@@ -142,7 +142,7 @@ class Sexy_Author_Bio_Admin {
 			),
 			'author_name_font_size' => array(
 				'title' => __( 'Author Name Font Size', $this->plugin_slug ),
-				'default' => 27,
+				'default' => 32,
 				'type' => 'text',
 				'description' => sprintf( __( 'Set the author name font size', $this->plugin_slug ) ),
 				'section' => 'design',
@@ -216,12 +216,36 @@ class Sexy_Author_Bio_Admin {
 				'section' => 'design',
 				'menu' => 'sexyauthorbio_settings'
 			),
-			'border_size' => array(
-				'title' => __( 'Border size', $this->plugin_slug ),
-				'default' => 2,
+			'border_top_size' => array(
+				'title' => __( 'Top Border size', $this->plugin_slug ),
+				'default' => 20,
 				'type' => 'text',
 				'section' => 'design',
-				'description' => __( 'Thickness of the top and bottom edge of the box (only integers).', $this->plugin_slug ),
+				'description' => __( 'Thickness of the top border of the box (only integers).', $this->plugin_slug ),
+				'menu' => 'sexyauthorbio_settings'
+			),
+			'border_right_size' => array(
+				'title' => __( 'Right Border size', $this->plugin_slug ),
+				'default' => 0,
+				'type' => 'text',
+				'section' => 'design',
+				'description' => __( 'Thickness of the right border of the box (only integers).', $this->plugin_slug ),
+				'menu' => 'sexyauthorbio_settings'
+			),
+			'border_bottom_size' => array(
+				'title' => __( 'Bottom Border size', $this->plugin_slug ),
+				'default' => 20,
+				'type' => 'text',
+				'section' => 'design',
+				'description' => __( 'Thickness of the bottom border of the box (only integers).', $this->plugin_slug ),
+				'menu' => 'sexyauthorbio_settings'
+			),
+			'border_left_size' => array(
+				'title' => __( 'Left Border size', $this->plugin_slug ),
+				'default' => 0,
+				'type' => 'text',
+				'section' => 'design',
+				'description' => __( 'Thickness of the left border of the box (only integers).', $this->plugin_slug ),
 				'menu' => 'sexyauthorbio_settings'
 			),
 			'border_style' => array(
@@ -249,16 +273,35 @@ class Sexy_Author_Bio_Admin {
 				'type' => 'section',
 				'menu' => 'sexyauthorbio_settings'
 			),
+			'icon_size' => array(
+				'title' => __( 'Icon size (in pixels)', $this->plugin_slug ),
+				'default' => 64,
+				'type' => 'text',
+				'section' => 'icon_set',
+				'description' => __( 'The height & width of the social icons.<br /><strong>DO NOT SET ABOVE 64!</strong>', $this->plugin_slug ),
+				'menu' => 'sexyauthorbio_settings'
+			),
+			'icon_spacing' => array(
+				'title' => __( 'Icon spacing (in pixels)', $this->plugin_slug ),
+				'default' => 2,
+				'type' => 'text',
+				'section' => 'icon_set',
+				'description' => __( 'The width between social icons.', $this->plugin_slug ),
+				'menu' => 'sexyauthorbio_settings'
+			),
 			'pick_icon_set' => array(
 				'title' => __( 'Pick Icon Set', $this->plugin_slug ),
-				'default' => 'squares',
+				'default' => 'flat-square',
 				'type' => 'select',
 				'section' => 'icon_set',
-				'description' => __( '<h4>Squares</h4><img id="sig-twitter" src="'.plugins_url( $path, $plugin ).'/sexy-author-bio/public/assets/images/twitter.png" style="width:55px;"> <img id="sig-google" src="'.plugins_url( $path, $plugin ).'/sexy-author-bio/public/assets/images/google-plus.png" style="width:55px;"> <img id="sig-facebook" src="'.plugins_url( $path, $plugin ).'/sexy-author-bio/public/assets/images/facebook.png" style="width:55px;"> <img id="sig-linkedin" src="'.plugins_url( $path, $plugin ).'/sexy-author-bio/public/assets/images/linkedin.png" style="width:55px;"><h4>Circles</h4><img id="sig-twitter" src="'.plugins_url( $path, $plugin ).'/sexy-author-bio/public/assets/images/twitter2.png" style="width:55px;"> <img id="sig-google" src="'.plugins_url( $path, $plugin ).'/sexy-author-bio/public/assets/images/google-plus2.png" style="width:55px;"> <img id="sig-facebook" src="'.plugins_url( $path, $plugin ).'/sexy-author-bio/public/assets/images/facebook2.png" style="width:55px;"> <img id="sig-linkedin" src="'.plugins_url( $path, $plugin ).'/sexy-author-bio/public/assets/images/linkedin2.png" style="width:55px;">', $this->plugin_slug ),
+				'description' => __( '<div style="background-color:#ffffff;padding:20px;border:solid 1px #eee;width:100%;max-width:1100px;"><img id="sab-icon-set" src="'.plugins_url( $path, $plugin ).'/sexy-author-bio/public/assets/images/social-icon-sets.png" style="width: 100%;max-width:1100px;></div>', $this->plugin_slug ),
 				'menu' => 'sexyauthorbio_settings',
 				'options' => array(
-					'squares' => __( 'Squares', $this->plugin_slug ),
-					'circles' => __( 'Circles', $this->plugin_slug )
+					'flat-square' => __( 'Flat Squares', $this->plugin_slug ),
+					'flat-square-rounded' => __( 'Flat Squares Rounded', $this->plugin_slug ),
+					'shadow-square' => __( 'Shadow Squares', $this->plugin_slug ),
+					'flat-circle' => __( 'Flat Circles', $this->plugin_slug ),
+					'shadow-circle' => __( 'Shadow Circles', $this->plugin_slug )
 				)
 			),
 			'custom_css' => array(
@@ -328,10 +371,27 @@ class Sexy_Author_Bio_Admin {
 	 */
 	public function contact_methods( $methods ) {
 		// Add new methods.
+		$methods['behance']   = __( 'Behance', $this->plugin_slug );
+		$methods['blogger']   = __( 'Blogger', $this->plugin_slug );
+		$methods['delicious']   = __( 'Delicious', $this->plugin_slug );
+		$methods['deviantart']   = __( 'DeviantArt', $this->plugin_slug );
+		$methods['dribbble']   = __( 'Dribbble', $this->plugin_slug );
 		$methods['facebook']   = __( 'Facebook', $this->plugin_slug );
-		$methods['twitter']    = __( 'Twitter', $this->plugin_slug );
-		$methods['googleplus'] = __( 'Google Plus', $this->plugin_slug );
+		$methods['flickr']   = __( 'Flickr', $this->plugin_slug );
+		$methods['github']   = __( 'GitHub', $this->plugin_slug );
+		$methods['google']   = __( 'Google+', $this->plugin_slug );
+		$methods['instagram']   = __( 'Instagram', $this->plugin_slug );
 		$methods['linkedin']   = __( 'LinkedIn', $this->plugin_slug );
+		$methods['myspace']   = __( 'MySpace', $this->plugin_slug );
+		$methods['pinterest']   = __( 'Pinterest', $this->plugin_slug );
+		$methods['rss']   = __( 'RSS', $this->plugin_slug );
+		$methods['stumbleupon']   = __( 'StumbleUpon', $this->plugin_slug );
+		$methods['tumblr']   = __( 'Tumblr', $this->plugin_slug );
+		$methods['twitter']   = __( 'Twitter', $this->plugin_slug );
+		$methods['vimeo']   = __( 'Vimeo', $this->plugin_slug );
+		$methods['wordpress']   = __( 'WordPress', $this->plugin_slug );
+		$methods['yahoo']   = __( 'Yahoo!', $this->plugin_slug );
+		$methods['youtube']   = __( 'YouTube', $this->plugin_slug );
 
 		// Remove old methods.
 		unset( $methods['aim'] );
