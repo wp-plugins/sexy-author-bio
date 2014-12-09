@@ -3,7 +3,7 @@ Contributors: penguininitiatives
 Tags: author bio, author bio plugin, authors plugin, plugin author, author biography, about the author plugin, signature, signature plugin, plugin author bio, author box, author description, author profile, author profile fields, author social icons, post author, profile fields, responsive author box, user profile, rel author, behance, blogger, delicious, deviantart, dribbble, facebook, flickr, github, google+, google plus, instagram, linkedin, myspace, pinterest, RSS, stumbleupon, tumblr, twitter, vimeo, wordpress, yahoo, youtube
 Requires at least: 3.8
 Tested up to: 4.0.1
-Stable tag: 1.2
+Stable tag: 1.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -74,6 +74,11 @@ Use this shortcode:
 * This plugin is released under a GPL license.
 
 == Changelog ==
+
+= 1.3 12/9/2014 =
+* [Co-Authors Plus](https://wordpress.org/plugins/co-authors-plus/) Compatibility so long as the co-authors are standard WordPress Users (does not fully support Guest Authors)
+* Added the following new customization options: Author Name Line Height, Author Name Font Weight, Author Byline Font Size, Author Byline Line Height, Author Byline Font, Author Byline Font Weight, Author Byline Capitalization, Author Byline Decoration, Author Biography Font Size, Author Biography Line Height, Author Biography Font, Author Biography Font Weight, Byline color & Icon Hover Effect
+* Minor security tweaks
 
 = 1.2 11/24/2014 =
 * Added five new social icon sets to choose from, all with icons for all the following social networks: Behance, Blogger, Delicious, DeviantArt, Dribbble, Facebook, Flickr, GitHub, Google+, Instagram, LinkedIn, MySpace, Pinterest, RSS, StumbleUpon, Tumblr, Twitter, Vimeo, WordPress, Yahoo! & YouTube

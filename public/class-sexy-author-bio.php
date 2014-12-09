@@ -231,27 +231,33 @@ class Sexy_Author_Bio {
 		$options = array(
 			'display' => 'posts',
 			'gravatar' => 100,
-			'author_name_font_size' => 32,
+			'author_name_font_size' => 48,
+			'author_name_line_height' => 48,
 			'author_name_font' => '',
+			'author_name_font_weight' => '400',
 			'author_name_capitalization' => 'uppercase',
 			'author_name_decoration' => 'none',
+			'author_byline_font_weight' => '700',
+			'author_byline_capitalization' => 'uppercase',
+			'author_biography_font_weight' => '400',
 			'separator' => 'at',
 			'background_color' => '#333333',
 			'highlight_color' => '#0088cc',
 			'text_color' => '#ffffff',
-			'title_color' => '#777777',
+			'byline_color' => '#777777',
 			'border_top_size' => 20,
 			'border_right_size' => 0,
 			'border_bottom_size' => 20,
 			'border_left_size' => 0,
 			'border_style' => 'solid',
 			'border_color' => '#444444',
-			'pick_icon_set' => 'flat-square',
-			'icon_size' => 64,
+			'icon_hover_effect' => 'fade',
+			'pick_icon_set' => 'flat-circle',
+			'icon_size' => 48,
 			'icon_spacing' => 2
 		);
 
-		update_option( 'sexyauthorbio_settings', $options );
+		add_option( 'sexyauthorbio_settings', $options );
 	}
 
 	/**
@@ -334,6 +340,124 @@ class Sexy_Author_Bio {
 		// Set the gravatar size.
 		$gravatar = ! empty( $settings['gravatar'] ) ? $settings['gravatar'] : 70;
 
+		if ( function_exists( 'get_coauthors' ) && count( get_coauthors( get_the_id() ) ) > 1 ){
+
+			ob_start();
+
+			//foreach ( get_coauthors( $post->ID ) as $sab_coauthor ){
+
+			$co_authors = get_coauthors();
+				foreach ( $co_authors as $key => $sab_coauthor ) {
+					$co_author_classes = array(
+						'co-author-wrap',
+						'co-author-number-' . ( $key + 1 ),
+					);
+				
+				$zeeauthor = $sab_coauthor->data->ID;
+
+				$output = array('author' => $zeeauthor, 'content' => '');
+
+				// Load the styles.
+				wp_enqueue_style( self::get_plugin_slug() . '-styles' );
+
+				// Set the gravatar size.
+				$gravatar = ! empty( $settings['gravatar'] ) ? $settings['gravatar'] : 70;
+
+				// Set the social icons
+				$social = array(
+					'behance'    => get_the_author_meta( 'behance', $zeeauthor ),
+					'blogger'    => get_the_author_meta( 'blogger', $zeeauthor ),
+					'delicious'    => get_the_author_meta( 'delicious', $zeeauthor ),
+					'deviantart'    => get_the_author_meta( 'deviantart', $zeeauthor ),
+					'dribbble'    => get_the_author_meta( 'dribbble', $zeeauthor ),
+					'facebook'    => get_the_author_meta( 'facebook', $zeeauthor ),
+					'flickr'    => get_the_author_meta( 'flickr', $zeeauthor ),
+					'github'    => get_the_author_meta( 'github', $zeeauthor ),
+					'google'    => get_the_author_meta( 'google', $zeeauthor ),
+					'instagram'    => get_the_author_meta( 'instagram', $zeeauthor ),
+					'linkedin'    => get_the_author_meta( 'linkedin', $zeeauthor ),
+					'myspace'    => get_the_author_meta( 'myspace', $zeeauthor ),
+					'pinterest'    => get_the_author_meta( 'pinterest', $zeeauthor ),
+					'rss'    => get_the_author_meta( 'rss', $zeeauthor ),
+					'stumbleupon'    => get_the_author_meta( 'stumbleupon', $zeeauthor ),
+					'tumblr'    => get_the_author_meta( 'tumblr', $zeeauthor ),
+					'twitter'    => get_the_author_meta( 'twitter', $zeeauthor ),
+					'vimeo'    => get_the_author_meta( 'vimeo', $zeeauthor ),
+					'wordpress'    => get_the_author_meta( 'wordpress', $zeeauthor ),
+					'yahoo'    => get_the_author_meta( 'yahoo', $zeeauthor ),
+					'youtube'    => get_the_author_meta( 'youtube', $zeeauthor )
+				);
+
+				if ( $settings['author_links'] == "link_to_author_page" ){ 
+					$author_name_link = esc_url( get_author_posts_url( get_the_author_meta( 'ID', $zeeauthor ) ) );
+					$author_avatar_link = esc_url( get_author_posts_url( get_the_author_meta( 'ID', $zeeauthor ) ) );
+				}else{
+					if ( get_the_author_meta('name-link', $zeeauthor) ){
+						$author_name_link = esc_url( get_the_author_meta( 'name-link', $zeeauthor ) );
+					}else{
+						$author_name_link = esc_url( get_author_posts_url( get_the_author_meta( 'ID', $zeeauthor ) ) );
+					}
+					if ( get_the_author_meta('avatar-link', $zeeauthor) ){
+						$author_avatar_link = esc_url( get_the_author_meta( 'avatar-link', $zeeauthor ) );
+					}else{
+						$author_avatar_link = esc_url( get_author_posts_url( get_the_author_meta( 'ID', $zeeauthor ) ) );
+					}
+				}
+
+				if ( get_the_author_meta('hide-signature') ) { $hidden = ";display:none!important;"; }else{ $hidden = ""; }
+
+				$output['content'] = '<div id="sexy-author-bio" style="margin:10px 0;" class="';
+				$output['content'] .= preg_replace("/[\s_]/", "-", strtolower(get_the_author()));
+				$output['content'] .= '">';
+
+				if ($settings['icon_hover_effect'] == "fade"){
+					$fade = 'class="bio-icon" ';
+				}else{
+					$fade = '';
+				}
+
+				$iconset = $settings['pick_icon_set'];
+
+
+						$output['content'] .= '<div id="sab-social-wrapper">';
+
+						foreach ( array_reverse($social) as $network => $url ) {
+							if ( $url ){
+								$output['content'] .= '<a id="sab-'.$network.'" href="' . esc_url($url) . '" target="' . $settings['link_target'] . '"><img '.$fade.'id="sig-'.$network.'" src="'.plugins_url( $path, $plugin ).'/sexy-author-bio/public/assets/images/'.$iconset.'/'.$network.'.png"></a>';
+							}
+						}
+
+						$output['content'] .= '</div>';
+
+				
+				$output['content'] .= '<div id="sab-author"><a rel="author" href="' . $author_name_link . '" title="' . get_the_author_meta( 'display_name', $zeeauthor) .'" target="' . $settings['link_target'] . '">' . $sab_coauthor->display_name . '</a></div><div id="sab-gravatar"><a href="' . $author_avatar_link . '" target="' . $settings['link_target'] . '">';
+				if( !get_the_author_meta('avatar-url', $zeeauthor) ){
+					$output['content'] .= get_avatar( get_the_author_meta('ID', $zeeauthor), $gravatar );
+				}else{
+					$output['content'] .= '<img src="'.get_the_author_meta('avatar-url', $zeeauthor).'" />';
+				}
+				$output['content'] .= '</a></div>';
+				if ( get_the_author_meta('job-title', $zeeauthor) && get_the_author_meta('company', $zeeauthor) && esc_url(get_the_author_meta('company-website-url', $zeeauthor) ) ) {
+					$output['content'] .= '<div id="sab-byline"><span id="sab-jobtitle">' . get_the_author_meta('job-title', $zeeauthor) . '</span><span id="sab-separator"> ' . $settings['separator'] . ' </span><span id="sab-company"><a href="' . esc_url(get_the_author_meta('company-website-url', $zeeauthor)) . '" target="' . $settings['link_target'] . '" style="color:' . $settings['highlight_color'] . ';">' . get_the_author_meta('company', $zeeauthor) . '</a></span></div>';
+				}
+				$output['content'] .= '<div id="sab-description">' . $sab_coauthor->description . '</div>';
+				$output['content'] .= '</div>';
+
+				echo $output['content'];
+				$bios = ob_get_contents();
+
+				//}
+
+			}
+
+			
+			ob_end_clean();
+			return $bios;
+			
+			
+
+		}else{
+
 		// Set the social icons
 		$social = array(
 			'behance'    => get_the_author_meta( 'behance' ),
@@ -365,27 +489,42 @@ class Sexy_Author_Bio {
 			$author_name_link = esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) );
 			$author_avatar_link = esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) );
 		}else{
-			$author_name_link = get_the_author_meta('name-link');
-			$author_avatar_link = get_the_author_meta('avatar-link');
+			if ( get_the_author_meta('name-link') ){
+				$author_name_link = esc_url( get_the_author_meta('name-link') );
+			}else{
+				$author_name_link = esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) );
+			}
+			if ( get_the_author_meta('avatar-link') ){
+				$author_avatar_link = esc_url( get_the_author_meta('avatar-link') );
+			}else{
+				$author_avatar_link = esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) );
+			}
 		}
 
 		if ( get_the_author_meta('hide-signature') ) { $hidden = ";display:none!important;"; }else{ $hidden = ""; }
 
 		$html = '<div id="sexy-author-bio" class="';
+
 		$html .= preg_replace("/[\s_]/", "-", strtolower(get_the_author()));
 		$html .= '">';
+
+		if ($settings['icon_hover_effect'] == "fade"){
+			$fade = 'class="bio-icon" ';
+		}else{
+			$fade = '';
+		}
 
 		$iconset = $settings['pick_icon_set'];
 
 		if ( get_the_author_meta('job-title') && get_the_author_meta('company') && get_the_author_meta('company-website-url') ) {
-			$titleline = '<div id="sab-title-company"><span id="sab-jobtitle">' . get_the_author_meta('job-title') . '</span><span id="sab-separator"> ' . $settings['separator'] . ' </span><span id="sab-company"><a href="' . get_the_author_meta('company-website-url') . '" target="' . $settings['link_target'] . '" style="color:' . $settings['highlight_color'] . ';">' . get_the_author_meta('company') . '</a></span></div>';
+			$titleline = '<div id="sab-byline"><span id="sab-jobtitle">' . get_the_author_meta('job-title') . '</span><span id="sab-separator"> ' . $settings['separator'] . ' </span><span id="sab-company"><a href="' . get_the_author_meta('company-website-url') . '" target="' . $settings['link_target'] . '" style="color:' . $settings['highlight_color'] . ';">' . get_the_author_meta('company') . '</a></span></div>';
 		}
 
 		$html .= '<div id="sab-social-wrapper">';
 
 		foreach ( array_reverse($social) as $network => $url ) {
 			if ( $url ){
-				$html .= '<a id="sab-'.$network.'" href="' . $url . '" target="' . $settings['link_target'] . '"><img id="sig-'.$network.'" src="'.plugins_url( $path, $plugin ).'/sexy-author-bio/public/assets/images/'.$iconset.'/'.$network.'.png"></a>';
+				$html .= '<a id="sab-'.$network.'" href="' . $url . '" target="' . $settings['link_target'] . '"><img '.$fade.'id="sig-'.$network.'" src="'.plugins_url( $path, $plugin ).'/sexy-author-bio/public/assets/images/'.$iconset.'/'.$network.'.png"></a>';
 			}
 		}
 
@@ -398,7 +537,11 @@ class Sexy_Author_Bio {
 		$html .= '</a></div>'.$titleline.'<div id="sab-description">' . apply_filters( 'sexyauthorbio_author_description', get_the_author_meta( 'description' ) ) . '</div>';
 		$html .= '</div>';
 
+
 		return $html;
+
+		}
+
 	}
 
 	/**
@@ -443,18 +586,52 @@ class Sexy_Author_Bio {
 			$customcssipadlandscape = $settings['custom_css_ipad_landscape'];
 			$customcssipadportrait = $settings['custom_css_ipad_portrait'];
 			$customcsssmartphones = $settings['custom_css_smartphones'];
-			if($settings['author_name_font']){
-				$authorfont = 'font-family:'.$settings['author_name_font'].';';
-			}
+
 			$output = '<style id="sexy-author-bio-css" type="text/css" media="screen">
 					  #sexy-author-bio { ' . $styles . $hidden . ' }
-					  #sab-author { ' . $authorfont . ' font-size: ' . $settings['author_name_font_size'] . 'px; line-height: ' . $settings['author_name_font_size'] . 'px; }
-					  #sab-gravatar { width: ' . $settings['gravatar'] . 'px; margin: 0 10px 0 0; }
-					  #sab-gravatar a { color: ' . $settings['highlight_color'] . '; }
-					  #sab-author a { margin-right:10px; text-decoration:' . $settings['author_name_decoration'] . '; text-transform:' . $settings['author_name_capitalization'] . '; color: ' . $settings['highlight_color'] . '; }
+					  #sab-author { '
+						.($settings['author_name_font'] ? 'font-family: '.$settings['author_name_font'].';' : '')
+						.($settings['author_name_font_weight'] ? 'font-weight: '.$settings['author_name_font_weight'].';' : '')
+						.($settings['author_name_font_size'] ? 'font-size: '.$settings['author_name_font_size'].'px;' : '')
+						.($settings['author_name_line_height'] ? 'line-height: '.$settings['author_name_line_height'].'px;' : '')
+					  .'}
+					  #sab-gravatar { '
+						.($settings['gravatar'] ? 'width: '.$settings['gravatar'].'px; margin: 5px 10px 0 0;' : '')
+					  .'}
+					  #sab-gravatar a { '
+						.($settings['highlight_color'] ? 'color: '.$settings['highlight_color'].';' : '')
+					  .'}
+					  #sab-author a { 
+					    margin-right:10px;'
+						.($settings['author_name_decoration'] ? 'text-decoration: '.$settings['author_name_decoration'].';' : '')
+						.($settings['author_name_capitalization'] ? 'text-transform: '.$settings['author_name_capitalization'].';' : '')
+						.($settings['highlight_color'] ? 'color: '.$settings['highlight_color'].';' : '')
+					  .'}
+					  #sab-byline { '
+						.($settings['byline_color'] ? 'color: '.$settings['byline_color'].';' : '')
+						.($settings['author_byline_font'] ? 'font-family: '.$settings['author_byline_font'].';' : '')
+						.($settings['author_byline_font_weight'] ? 'font-weight: '.$settings['author_byline_font_weight'].';' : '')
+						.($settings['author_byline_font_size'] ? 'font-size: '.$settings['author_byline_font_size'].'px;' : '')
+						.($settings['author_byline_line_height'] ? 'line-height: '.$settings['author_byline_line_height'].'px;' : '')
+						.($settings['author_byline_decoration'] ? 'text-decoration: '.$settings['author_byline_decoration'].';' : '')
+						.($settings['author_byline_capitalization'] ? 'text-transform: '.$settings['author_byline_capitalization'].';' : '')
+					  .'}
+					  #sab-description { '
+						.($settings['author_biography_font'] ? 'font-family: '.$settings['author_biography_font'].';' : '')
+						.($settings['author_biography_font_weight'] ? 'font-weight: '.$settings['author_biography_font_weight'].';' : '')
+						.($settings['author_biography_font_size'] ? 'font-size: '.$settings['author_biography_font_size'].'px;' : '')
+						.($settings['author_biography_line_height'] ? 'line-height: '.$settings['author_biography_line_height'].'px;' : '')
+					  .'}
 					  #sig-twitter, #sig-google, #sig-facebook, #sig-linkedin { margin-bottom: 10px; }
-					  [id^=sig-] { height:' . $settings['icon_size'] . 'px; width:' . $settings['icon_size'] . 'px; margin-left:' . $settings['icon_spacing'] . 'px; }
-					  #sab-title-company { color:' . $settings['title_color'] . '; }
+					  [id^=sig-] { '
+						.($settings['icon_size'] ? 'height: '.$settings['icon_size'].'px;' : '')
+						.($settings['icon_size'] ? 'width: '.$settings['icon_size'].'px;' : '')
+						.($settings['icon_spacing'] ? 'margin-left: '.$settings['icon_spacing'].'px;' : '')
+						.($settings[''] ? 'SELECTOR: '.$settings[''].';' : '')
+						.($settings[''] ? 'SELECTOR: '.$settings[''].';' : '')
+						.($settings[''] ? 'SELECTOR: '.$settings[''].';' : '')
+						.($settings[''] ? 'SELECTOR: '.$settings[''].';' : '')
+					  .'}
 					  '.$customcss.'
 					  @media (min-width: 1200px) {
 					  '.$customcssdesktop.'
@@ -466,7 +643,9 @@ class Sexy_Author_Bio {
 					  '.$customcssipadportrait.'
 					  }
 					  @media (max-width: 767px) {
-					  [id^=sig-] { margin-left: 0; margin-right:' . $settings['icon_spacing'] . 'px; }
+					  [id^=sig-] { margin-left: 0;'
+						.($settings['icon_spacing'] ? 'margin-right: '.$settings['icon_spacing'].'px;' : '')
+					  .'}
 					  '.$customcsssmartphones.'
 					  }
 					  </style>';

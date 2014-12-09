@@ -105,7 +105,7 @@ class Sexy_Author_Bio_Admin {
 			),
 			'author_links' => array(
 				'title' => __( 'Author Links', $this->plugin_slug ),
-				'default' => 'posts',
+				'default' => 'users_set',
 				'type' => 'select',
 				'description' => sprintf( __( 'Control whether or not users can set avatar and name links.', $this->plugin_slug ) ),
 				'section' => 'settings',
@@ -144,7 +144,15 @@ class Sexy_Author_Bio_Admin {
 				'title' => __( 'Author Name Font Size', $this->plugin_slug ),
 				'default' => 32,
 				'type' => 'text',
-				'description' => sprintf( __( 'Set the author name font size', $this->plugin_slug ) ),
+				'description' => sprintf( __( 'Set the author name font size in pixels', $this->plugin_slug ) ),
+				'section' => 'design',
+				'menu' => 'sexyauthorbio_settings'
+			),
+			'author_name_line_height' => array(
+				'title' => __( 'Author Name Line Height', $this->plugin_slug ),
+				'default' => 32,
+				'type' => 'text',
+				'description' => sprintf( __( 'Set the author name line height in pixels (the same line height as the font size is a good starting point)', $this->plugin_slug ) ),
 				'section' => 'design',
 				'menu' => 'sexyauthorbio_settings'
 			),
@@ -155,6 +163,25 @@ class Sexy_Author_Bio_Admin {
 				'description' => sprintf( __( 'Set the author name font', $this->plugin_slug ) ),
 				'section' => 'design',
 				'menu' => 'sexyauthorbio_settings'
+			),
+			'author_name_font_weight' => array(
+				'title' => __( 'Author Name Font Weight', $this->plugin_slug ),
+				'default' => '400',
+				'type' => 'select',
+				'description' => sprintf( __( 'Set the author name font weight (different fonts allow for different weight options)', $this->plugin_slug ) ),
+				'section' => 'design',
+				'menu' => 'sexyauthorbio_settings',
+				'options' => array(
+					'100' => __( 'Extra Light or Ultra Light', $this->plugin_slug ),
+					'200' => __( 'Light or Thin', $this->plugin_slug ),
+					'300' => __( 'Book or Demi', $this->plugin_slug ),
+					'400' => __( 'Normal or Regular', $this->plugin_slug ),
+					'500' => __( 'Medium', $this->plugin_slug ),
+					'600' => __( 'Semibold, Demibold', $this->plugin_slug ),
+					'700' => __( 'Bold', $this->plugin_slug ),
+					'800' => __( 'Black, Extra Bold or Heavy', $this->plugin_slug ),
+					'900' => __( 'Extra Black, Fat, Poster or Ultra Black', $this->plugin_slug )
+				)
 			),
 			'author_name_capitalization' => array(
 				'title' => __( 'Author Name Capitalization', $this->plugin_slug ),
@@ -178,6 +205,116 @@ class Sexy_Author_Bio_Admin {
 				'options' => array(
 					'none' => __( 'None', $this->plugin_slug ),
 					'underline' => __( 'Underline', $this->plugin_slug )
+				)
+			),
+			'author_byline_font_size' => array(
+				'title' => __( 'Author Byline Font Size', $this->plugin_slug ),
+				'default' => '',
+				'type' => 'text',
+				'description' => sprintf( __( 'Set the author byline (Job Title &amp; Company) font size in pixels', $this->plugin_slug ) ),
+				'section' => 'design',
+				'menu' => 'sexyauthorbio_settings'
+			),
+			'author_byline_line_height' => array(
+				'title' => __( 'Author Byline Line Height', $this->plugin_slug ),
+				'default' => '',
+				'type' => 'text',
+				'description' => sprintf( __( 'Set the author byline line height in pixels (the same line height as the font size is a good starting point)', $this->plugin_slug ) ),
+				'section' => 'design',
+				'menu' => 'sexyauthorbio_settings'
+			),
+			'author_byline_font' => array(
+				'title' => __( 'Author Byline Font', $this->plugin_slug ),
+				'default' => '',
+				'type' => 'text',
+				'description' => sprintf( __( 'Set the author byline (Job Title &amp; Company) font', $this->plugin_slug ) ),
+				'section' => 'design',
+				'menu' => 'sexyauthorbio_settings'
+			),
+			'author_byline_font_weight' => array(
+				'title' => __( 'Author Byline Font Weight', $this->plugin_slug ),
+				'default' => '400',
+				'type' => 'select',
+				'description' => sprintf( __( 'Set the author byline font weight (different fonts allow for different weight options)', $this->plugin_slug ) ),
+				'section' => 'design',
+				'menu' => 'sexyauthorbio_settings',
+				'options' => array(
+					'100' => __( 'Extra Light or Ultra Light', $this->plugin_slug ),
+					'200' => __( 'Light or Thin', $this->plugin_slug ),
+					'300' => __( 'Book or Demi', $this->plugin_slug ),
+					'400' => __( 'Normal or Regular', $this->plugin_slug ),
+					'500' => __( 'Medium', $this->plugin_slug ),
+					'600' => __( 'Semibold, Demibold', $this->plugin_slug ),
+					'700' => __( 'Bold', $this->plugin_slug ),
+					'800' => __( 'Black, Extra Bold or Heavy', $this->plugin_slug ),
+					'900' => __( 'Extra Black, Fat, Poster or Ultra Black', $this->plugin_slug )
+				)
+			),
+			'author_byline_capitalization' => array(
+				'title' => __( 'Author Byline Capitalization', $this->plugin_slug ),
+				'default' => 'uppercase',
+				'type' => 'select',
+				'section' => 'design',
+				'menu' => 'sexyauthorbio_settings',
+				'options' => array(
+					'uppercase' => __( 'UPPERCASE', $this->plugin_slug ),
+					'capitalize' => __( 'Capitalize', $this->plugin_slug ),
+					'lowercase' => __( 'lowercase', $this->plugin_slug ),
+					'none' => __( 'As is', $this->plugin_slug )
+				)
+			),
+			'author_byline_decoration' => array(
+				'title' => __( 'Author Byline Decoration', $this->plugin_slug ),
+				'default' => 'none',
+				'type' => 'select',
+				'section' => 'design',
+				'menu' => 'sexyauthorbio_settings',
+				'options' => array(
+					'none' => __( 'None', $this->plugin_slug ),
+					'underline' => __( 'Underline', $this->plugin_slug )
+				)
+			),
+			'author_biography_font_size' => array(
+				'title' => __( 'Author Biography Font Size', $this->plugin_slug ),
+				'default' => '',
+				'type' => 'text',
+				'description' => sprintf( __( 'Set the author biography font size in pixels', $this->plugin_slug ) ),
+				'section' => 'design',
+				'menu' => 'sexyauthorbio_settings'
+			),
+			'author_biography_line_height' => array(
+				'title' => __( 'Author Biography Line Height', $this->plugin_slug ),
+				'default' => '',
+				'type' => 'text',
+				'description' => sprintf( __( 'Set the author biography line height in pixels (the same line height as the font size is a good starting point)', $this->plugin_slug ) ),
+				'section' => 'design',
+				'menu' => 'sexyauthorbio_settings'
+			),
+			'author_biography_font' => array(
+				'title' => __( 'Author Biography Font', $this->plugin_slug ),
+				'default' => '',
+				'type' => 'text',
+				'description' => sprintf( __( 'Set the author biography font', $this->plugin_slug ) ),
+				'section' => 'design',
+				'menu' => 'sexyauthorbio_settings'
+			),
+			'author_biography_font_weight' => array(
+				'title' => __( 'Author Biography Font Weight', $this->plugin_slug ),
+				'default' => '400',
+				'type' => 'select',
+				'description' => sprintf( __( 'Set the author biography font weight (different fonts allow for different weight options)', $this->plugin_slug ) ),
+				'section' => 'design',
+				'menu' => 'sexyauthorbio_settings',
+				'options' => array(
+					'100' => __( 'Extra Light or Ultra Light', $this->plugin_slug ),
+					'200' => __( 'Light or Thin', $this->plugin_slug ),
+					'300' => __( 'Book or Demi', $this->plugin_slug ),
+					'400' => __( 'Normal or Regular', $this->plugin_slug ),
+					'500' => __( 'Medium', $this->plugin_slug ),
+					'600' => __( 'Semibold, Demibold', $this->plugin_slug ),
+					'700' => __( 'Bold', $this->plugin_slug ),
+					'800' => __( 'Black, Extra Bold or Heavy', $this->plugin_slug ),
+					'900' => __( 'Extra Black, Fat, Poster or Ultra Black', $this->plugin_slug )
 				)
 			),
 			'separator' => array(
@@ -209,8 +346,8 @@ class Sexy_Author_Bio_Admin {
 				'section' => 'design',
 				'menu' => 'sexyauthorbio_settings'
 			),
-			'title_color' => array(
-				'title' => __( 'Title color', $this->plugin_slug ),
+			'byline_color' => array(
+				'title' => __( 'Byline color', $this->plugin_slug ),
 				'default' => '#777777',
 				'type' => 'color',
 				'section' => 'design',
@@ -288,6 +425,18 @@ class Sexy_Author_Bio_Admin {
 				'section' => 'icon_set',
 				'description' => __( 'The width between social icons.', $this->plugin_slug ),
 				'menu' => 'sexyauthorbio_settings'
+			),
+			'icon_hover_effect' => array(
+				'title' => __( 'Icon Hover Effect', $this->plugin_slug ),
+				'default' => 'fade',
+				'type' => 'select',
+				'section' => 'icon_set',
+				'description' => __( 'The effect when users hover over social icons with their cursor.', $this->plugin_slug ),
+				'menu' => 'sexyauthorbio_settings',
+				'options' => array(
+					'fade' => __( 'Fade', $this->plugin_slug ),
+					'none' => __( 'None', $this->plugin_slug )
+				)
 			),
 			'pick_icon_set' => array(
 				'title' => __( 'Pick Icon Set', $this->plugin_slug ),
