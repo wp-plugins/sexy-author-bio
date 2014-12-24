@@ -17,11 +17,11 @@ Five social icon sets to choose from, with support for all the following social 
 
 = Credits =
 
-* Plugin built and maintained by [@AndyForsberg](https://twitter.com/andyforsberg).
+* Plugin built and maintained by [@AndyForsberg](https://twitter.com/andyforsberg) of [Penguin Initiatives](http://penguininitiatives.com/).
 * The included [Geekly](https://www.behance.net/gallery/Geekly-40-Flat-Icons/10357351) circular social icons are complements of [@Abdo_Ba](https://twitter.com/Abdo_Ba).
 * This is a derivative work of the [Author Bio Box WordPress Plugin](http://wordpress.org/plugins/author-bio-box/), which was authored by [Claudio Sanches](http://profiles.wordpress.org/claudiosanches/).
 
-= Latest from [Penguin Initiatives](http://penguininitiatives.com/) =
+= Latest from Penguin Initiatives =
 
 * [Best WordPress Hosting](http://penguininitiatives.com/best-wordpress-hosting/).
 * [Best Free & Premium WordPress Plugins by Category in 2014](http://penguininitiatives.com/best-wordpress-plugins/).
