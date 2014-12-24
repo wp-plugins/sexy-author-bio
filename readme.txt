@@ -23,9 +23,9 @@ Five social icon sets to choose from, with support for all the following social 
 
 = Latest from Penguin Initiatives =
 
-* [Best WordPress Hosting](http://penguininitiatives.com/best-wordpress-hosting/).
-* [Best Free & Premium WordPress Plugins by Category in 2014](http://penguininitiatives.com/best-wordpress-plugins/).
-* [Fastest & Best WordPress Themes in 2014](http://penguininitiatives.com/fastest-wordpress-themes-2014/).
+* [Best WordPress Hosting](http://penguininitiatives.com/best-wordpress-hosting/)
+* [Best Free & Premium WordPress Plugins by Category in 2014](http://penguininitiatives.com/best-wordpress-plugins/)
+* [Fastest & Best WordPress Themes in 2014](http://penguininitiatives.com/fastest-wordpress-themes-2014/)
 
 == Installation ==
 
