@@ -3,7 +3,7 @@ Contributors: penguininitiatives
 Tags: author bio, author bio plugin, authors plugin, plugin author, author biography, about the author plugin, signature, signature plugin, plugin author bio, author box, author description, author profile, author profile fields, author social icons, post author, profile fields, responsive author box, user profile, rel author, behance, blogger, delicious, deviantart, dribbble, facebook, flickr, github, google+, google plus, instagram, linkedin, myspace, pinterest, RSS, stumbleupon, tumblr, twitter, vimeo, wordpress, yahoo, youtube
 Requires at least: 3.8
 Tested up to: 4.1
-Stable tag: 1.3.1
+Stable tag: 1.3.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -17,6 +17,7 @@ Five social icon sets to choose from, with support for all the following social 
 
 = Credits =
 
+* Contribute to Sexy Author Bio on [GitHub](https://github.com/andyforsberg/sexy-author-bio).
 * Plugin built and maintained by [@AndyForsberg](https://twitter.com/andyforsberg) of [Penguin Initiatives](http://penguininitiatives.com/).
 * The included [Geekly](https://www.behance.net/gallery/Geekly-40-Flat-Icons/10357351) circular social icons are complements of [@Abdo_Ba](https://twitter.com/Abdo_Ba).
 * This is a derivative work of the [Author Bio Box WordPress Plugin](http://wordpress.org/plugins/author-bio-box/), which was authored by [Claudio Sanches](http://profiles.wordpress.org/claudiosanches/).
@@ -73,6 +74,9 @@ Use this shortcode:
 * This plugin is released under a GPL license.
 
 == Changelog ==
+
+= 1.3.2 12/24/2014 =
+* Added link to GitHub repo.
 
 = 1.3.1 12/24/2014 =
 * Added email icon and email field to user profiles.
