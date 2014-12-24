@@ -525,6 +525,7 @@ class Sexy_Author_Bio_Admin {
 		$methods['delicious']   = __( 'Delicious', $this->plugin_slug );
 		$methods['deviantart']   = __( 'DeviantArt', $this->plugin_slug );
 		$methods['dribbble']   = __( 'Dribbble', $this->plugin_slug );
+		$methods['email2']   = __( 'Email', $this->plugin_slug );
 		$methods['facebook']   = __( 'Facebook', $this->plugin_slug );
 		$methods['flickr']   = __( 'Flickr', $this->plugin_slug );
 		$methods['github']   = __( 'GitHub', $this->plugin_slug );

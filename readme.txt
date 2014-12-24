@@ -2,8 +2,8 @@
 Contributors: penguininitiatives
 Tags: author bio, author bio plugin, authors plugin, plugin author, author biography, about the author plugin, signature, signature plugin, plugin author bio, author box, author description, author profile, author profile fields, author social icons, post author, profile fields, responsive author box, user profile, rel author, behance, blogger, delicious, deviantart, dribbble, facebook, flickr, github, google+, google plus, instagram, linkedin, myspace, pinterest, RSS, stumbleupon, tumblr, twitter, vimeo, wordpress, yahoo, youtube
 Requires at least: 3.8
-Tested up to: 4.0.1
-Stable tag: 1.3
+Tested up to: 4.1
+Stable tag: 1.3.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -17,16 +17,15 @@ Five social icon sets to choose from, with support for all the following social 
 
 = Credits =
 
-* Plugin built and maintained by [@AndyForsberg](https://twitter.com/andyforsberg) of [Penguin Initiatives](http://penguininitiatives.com/).
+* Plugin built and maintained by [@AndyForsberg](https://twitter.com/andyforsberg).
 * The included [Geekly](https://www.behance.net/gallery/Geekly-40-Flat-Icons/10357351) circular social icons are complements of [@Abdo_Ba](https://twitter.com/Abdo_Ba).
 * This is a derivative work of the [Author Bio Box WordPress Plugin](http://wordpress.org/plugins/author-bio-box/), which was authored by [Claudio Sanches](http://profiles.wordpress.org/claudiosanches/).
 
-= Further Reading =
+= Latest from [Penguin Initiatives](http://penguininitiatives.com/) =
 
-* Get the [best WordPress Hosting](http://penguininitiatives.com/best-wordpress-hosting-2014/).
-* Get the [best free WordPress plugins](http://penguininitiatives.com/best-wordpress-plugins-free-2014/).
-* Get the [best premium WordPress plugins](http://penguininitiatives.com/best-premium-wordpress-plugins-2014/).
-* Get the [best WordPress themes](http://penguininitiatives.com/fastest-wordpress-themes-2014/).
+* [Best WordPress Hosting](http://penguininitiatives.com/best-wordpress-hosting/).
+* [Best Free & Premium WordPress Plugins by Category in 2014](http://penguininitiatives.com/best-wordpress-plugins/).
+* [Fastest & Best WordPress Themes in 2014](http://penguininitiatives.com/fastest-wordpress-themes-2014/).
 
 == Installation ==
 
@@ -74,6 +73,10 @@ Use this shortcode:
 * This plugin is released under a GPL license.
 
 == Changelog ==
+
+= 1.3.1 12/24/2014 =
+* Added email icon and email field to user profiles.
+* Optimized all social icon images.
 
 = 1.3 12/9/2014 =
 * [Co-Authors Plus](https://wordpress.org/plugins/co-authors-plus/) Compatibility so long as the co-authors are standard WordPress Users (does not fully support Guest Authors)
