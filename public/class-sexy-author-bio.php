@@ -405,9 +405,9 @@ class Sexy_Author_Bio {
 					}
 				}
 
-				if ( get_the_author_meta('hide-signature') ) { $hidden = ";display:none!important;"; }else{ $hidden = ""; }
+				if ( get_the_author_meta('hide-signature', $zeeauthor) ) { $hidden = "display:none!important;"; }else{ $hidden = ""; }
 
-				$output['content'] = '<div id="sexy-author-bio" style="margin:10px 0;" class="';
+				$output['content'] = '<div id="sexy-author-bio" style="margin:10px 0;'.$hidden.'" class="';
 				$output['content'] .= preg_replace("/[\s_]/", "-", strtolower(get_the_author()));
 				$output['content'] .= '">';
 
@@ -438,8 +438,11 @@ class Sexy_Author_Bio {
 					$output['content'] .= '<img src="'.get_the_author_meta('avatar-url', $zeeauthor).'" />';
 				}
 				$output['content'] .= '</a></div>';
-				if ( get_the_author_meta('job-title', $zeeauthor) && get_the_author_meta('company', $zeeauthor) && esc_url(get_the_author_meta('company-website-url', $zeeauthor) ) ) {
+				if ( !get_the_author_meta('hide-job-title', $zeeauthor) && get_the_author_meta('job-title', $zeeauthor) && get_the_author_meta('company', $zeeauthor) && esc_url(get_the_author_meta('company-website-url', $zeeauthor) ) ) {
 					$output['content'] .= '<div id="sab-byline"><span id="sab-jobtitle">' . get_the_author_meta('job-title', $zeeauthor) . '</span><span id="sab-separator"> ' . $settings['separator'] . ' </span><span id="sab-company"><a href="' . esc_url(get_the_author_meta('company-website-url', $zeeauthor)) . '" target="' . $settings['link_target'] . '" style="color:' . $settings['highlight_color'] . ';">' . get_the_author_meta('company', $zeeauthor) . '</a></span></div>';
+				}
+				if ( get_the_author_meta('hide-job-title', $zeeauthor) && get_the_author_meta('company', $zeeauthor) && esc_url(get_the_author_meta('company-website-url', $zeeauthor) ) ) {
+					$output['content'] .= '<div id="sab-byline"><span id="sab-company"><a href="' . esc_url(get_the_author_meta('company-website-url', $zeeauthor)) . '" target="' . $settings['link_target'] . '" style="color:' . $settings['highlight_color'] . ';">' . get_the_author_meta('company', $zeeauthor) . '</a></span></div>';
 				}
 				$output['content'] .= '<div id="sab-description">' . $sab_coauthor->description . '</div>';
 				$output['content'] .= '</div>';
@@ -503,9 +506,9 @@ class Sexy_Author_Bio {
 			}
 		}
 
-		if ( get_the_author_meta('hide-signature') ) { $hidden = ";display:none!important;"; }else{ $hidden = ""; }
+		if ( get_the_author_meta('hide-signature') ) { $hidden = "display:none!important;"; }else{ $hidden = ""; }
 
-		$html = '<div id="sexy-author-bio" class="';
+		$html = '<div id="sexy-author-bio" style="'.$hidden.'" class="';
 
 		$html .= preg_replace("/[\s_]/", "-", strtolower(get_the_author()));
 		$html .= '">';
@@ -518,8 +521,12 @@ class Sexy_Author_Bio {
 
 		$iconset = $settings['pick_icon_set'];
 
-		if ( get_the_author_meta('job-title') && get_the_author_meta('company') && get_the_author_meta('company-website-url') ) {
+		if ( !get_the_author_meta('hide-job-title') && get_the_author_meta('job-title') && get_the_author_meta('company') && get_the_author_meta('company-website-url') ) {
 			$titleline = '<div id="sab-byline"><span id="sab-jobtitle">' . get_the_author_meta('job-title') . '</span><span id="sab-separator"> ' . $settings['separator'] . ' </span><span id="sab-company"><a href="' . get_the_author_meta('company-website-url') . '" target="' . $settings['link_target'] . '" style="color:' . $settings['highlight_color'] . ';">' . get_the_author_meta('company') . '</a></span></div>';
+		}
+
+		if ( get_the_author_meta('hide-job-title') && get_the_author_meta('company') && get_the_author_meta('company-website-url') ) {
+			$titleline = '<div id="sab-byline"><span id="sab-company"><a href="' . get_the_author_meta('company-website-url') . '" target="' . $settings['link_target'] . '" style="color:' . $settings['highlight_color'] . ';">' . get_the_author_meta('company') . '</a></span></div>';
 		}
 
 		$html .= '<div id="sab-social-wrapper">';
@@ -590,7 +597,7 @@ class Sexy_Author_Bio {
 			$customcsssmartphones = $settings['custom_css_smartphones'];
 
 			$output = '<style id="sexy-author-bio-css" type="text/css" media="screen">
-					  #sexy-author-bio { ' . $styles . $hidden . ' }
+					  #sexy-author-bio { ' . $styles . ' }
 					  #sab-author { '
 						.($settings['author_name_font'] ? 'font-family: '.$settings['author_name_font'].';' : '')
 						.($settings['author_name_font_weight'] ? 'font-weight: '.$settings['author_name_font_weight'].';' : '')

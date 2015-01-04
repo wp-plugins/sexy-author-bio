@@ -637,7 +637,7 @@ class Sexy_Author_Bio_Admin {
 					add_settings_field(
 						$key,
 						$value['title'],
-						array( $this, 'textarea_element_callback' ),
+						array( $this, 'textarea_element_callback'),
 						$value['menu'],
 						$value['section'],
 						array(

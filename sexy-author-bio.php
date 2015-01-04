@@ -10,7 +10,7 @@
  * @wordpress-plugin
  * Plugin Name:       Sexy Author Bio
  * Description:       A WordPress author bio plugin that adds a sexy, custom about the author box below your posts for single and multiple authors.
- * Version:           1.3.2
+ * Version:           1.3.3
  * Author:            penguininitiatives
  * Author URI:        http://penguininitiatives.com/
  * Text Domain:       sexy-author-bio
@@ -100,6 +100,13 @@ if ( $settings['author_links'] == "link_to_author_page" ){
 </td>
 </tr>
 <tr>
+<th><label for="hide-job-title"><?php _e("Hide Job Title"); ?></label></th>
+<td>
+<input type="checkbox" name="hide-job-title" id="hide-job-title" value="yes" <?php if (esc_attr( get_the_author_meta( "hide-job-title", $user->ID )) == "yes") echo "checked"; ?> /><br />
+<span class="description"><?php _e("Check this checkbox if you want the job title hidden for this user."); ?></span>
+</td>
+</tr>
+<tr>
 <th><label for="company"><?php _e("Company"); ?></label></th>
 <td>
 <input type="text" name="company" id="company" value="<?php echo esc_attr( get_the_author_meta( 'company', $user->ID ) ); ?>" class="regular-text" /><br />
@@ -130,8 +137,8 @@ if ( $settings['author_links'] == "link_to_author_page" ){
 <tr>
 <th><label for="hide-signature"><?php _e("Hide Signature"); ?></label></th>
 <td>
-<input type="text" name="hide-signature" id="hide-signature" value="<?php echo esc_attr( get_the_author_meta( 'hide-signature', $user->ID ) ); ?>" class="regular-text" /><br />
-<span class="description"><?php _e("Enter any text above if you want the signature hidden for this user. Leave it blank if you want the signature shown for this user."); ?></span>
+<input type="checkbox" name="hide-signature" id="hide-signature" value="yes" <?php if (esc_attr( get_the_author_meta( "hide-signature", $user->ID )) == "yes") echo "checked"; ?> /><br />
+<span class="description"><?php _e("Check this checkbox if you want the signature hidden for this user."); ?></span>
 </td>
 </tr>
 <tr>
@@ -152,6 +159,7 @@ function save_extra_user_profile_fields( $user_id ) {
 if ( !current_user_can( 'edit_user', $user_id ) ) { return false; }
 
 update_user_meta( $user_id, 'job-title', $_POST['job-title'] );
+update_user_meta( $user_id, 'hide-job-title', $_POST['hide-job-title'] );
 update_user_meta( $user_id, 'company', $_POST['company'] );
 update_user_meta( $user_id, 'company-website-url', $_POST['company-website-url'] );
 update_user_meta( $user_id, 'name-link', $_POST['name-link'] );
