@@ -10,7 +10,7 @@
  * @wordpress-plugin
  * Plugin Name:       Sexy Author Bio
  * Description:       A WordPress author bio plugin that adds a sexy, custom about the author box below your posts for single and multiple authors.
- * Version:           1.3.3
+ * Version:           1.3.4
  * Author:            penguininitiatives
  * Author URI:        http://penguininitiatives.com/
  * Text Domain:       sexy-author-bio

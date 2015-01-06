@@ -444,7 +444,7 @@ class Sexy_Author_Bio {
 				if ( get_the_author_meta('hide-job-title', $zeeauthor) && get_the_author_meta('company', $zeeauthor) && esc_url(get_the_author_meta('company-website-url', $zeeauthor) ) ) {
 					$output['content'] .= '<div id="sab-byline"><span id="sab-company"><a href="' . esc_url(get_the_author_meta('company-website-url', $zeeauthor)) . '" target="' . $settings['link_target'] . '" style="color:' . $settings['highlight_color'] . ';">' . get_the_author_meta('company', $zeeauthor) . '</a></span></div>';
 				}
-				$output['content'] .= '<div id="sab-description">' . $sab_coauthor->description . '</div>';
+				$output['content'] .= '<div id="sab-description">' . nl2br( $sab_coauthor->description ) . '</div>';
 				$output['content'] .= '</div>';
 
 				echo $output['content'];
@@ -543,7 +543,7 @@ class Sexy_Author_Bio {
 		}else{
 			$html .= '<img src="'.get_the_author_meta('avatar-url').'" />';
 		}
-		$html .= '</a></div>'.$titleline.'<div id="sab-description">' . apply_filters( 'sexyauthorbio_author_description', get_the_author_meta( 'description' ) ) . '</div>';
+		$html .= '</a></div>'.$titleline.'<div id="sab-description">' . nl2br( apply_filters( 'sexyauthorbio_author_description', get_the_author_meta( 'description' ) ) ) . '</div>';
 		$html .= '</div>';
 
 
