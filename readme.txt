@@ -66,9 +66,10 @@ Use this shortcode:
 
 == Screenshots ==
 
-1. Example Sexy Author Bio Front-End Display
-2. Example Sexy Author Bio User Settings
-3. Example Sexy Author Bio Display & Design Settings
+1. Example Sexy Author Bio Front-End Display #1
+2. Example Sexy Author Bio Front-End Display #2
+3. Example Sexy Author Bio User Settings
+4. Example Sexy Author Bio Display & Design Settings
 
 = How do I disable Gravatar Hovercards? =
 
