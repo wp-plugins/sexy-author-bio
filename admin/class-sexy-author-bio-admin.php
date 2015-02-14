@@ -3,16 +3,16 @@
  * Sexy Author Bio
  *
  * @package   Sexy_Author_Bio
- * @author    Andy Forsberg <andyforsberg@gmail.com>
+ * @author    Andy Forsberg <sab@penguininitiatives.com>
  * @license   GPL-2.0+
- * @copyright 2014 Penguin Initiatives
+ * @copyright 2015 Penguin Initiatives
  */
 
 /**
  * Sexy_Author_Bio_Admin class.
  *
  * @package   Sexy_Author_Bio_Admin
- * @author    Andy Forsberg <andyforsberg@gmail.com>
+ * @author    Andy Forsberg <sab@penguininitiatives.com>
  */
 class Sexy_Author_Bio_Admin {
 
@@ -113,6 +113,7 @@ class Sexy_Author_Bio_Admin {
 				'options' => array(
 					'users_set' => __( 'Users set the links', $this->plugin_slug ),
 					'link_to_author_page' => __( 'Author avatar and name link to author page', $this->plugin_slug ),
+					'not_linked' => __( 'Remove links from author avatar and name', $this->plugin_slug ),
 				)
 			),
 			'link_target' => array(
@@ -404,6 +405,42 @@ class Sexy_Author_Bio_Admin {
 				'type' => 'color',
 				'section' => 'design',
 				'menu' => 'sexyauthorbio_settings'
+			),
+			'mobile' => array(
+				'title' => __( 'Mobile', $this->plugin_slug ),
+				'type' => 'section',
+				'menu' => 'sexyauthorbio_settings'
+			),
+			'mobile_avatar_display' => array(
+				'title' => __( 'Display Avatar on Smartphones', $this->plugin_slug ),
+				'default' => 'hide',
+				'type' => 'select',
+				'section' => 'mobile',
+				'description' => __( 'Toggle display of Sexy Author Bio Avatars on smartphones (0 - 767px in width).', $this->plugin_slug ),
+				'menu' => 'sexyauthorbio_settings',
+				'options' => array(
+					'display' => __( 'Display', $this->plugin_slug ),
+					'hide' => __( 'Hide', $this->plugin_slug )
+				)
+			),
+			'user_roles' => array(
+				'title' => __( 'User Roles', $this->plugin_slug ),
+				'type' => 'section',
+				'menu' => 'sexyauthorbio_settings'
+			),
+			'user_roles_access' => array(
+				'title' => __( 'Allow Access For', $this->plugin_slug ),
+				'default' => 'contributors',
+				'type' => 'select',
+				'section' => 'user_roles',
+				'description' => __( 'Control which user roles have access to Sexy Author Bio user fields.', $this->plugin_slug ),
+				'menu' => 'sexyauthorbio_settings',
+				'options' => array(
+					'admins' => __( 'Admins', $this->plugin_slug ),
+					'editors' => __( 'Admins and Editors', $this->plugin_slug ),
+					'authors' => __( 'Admins, Editors and Authors', $this->plugin_slug ),
+					'contributors' => __( 'Admins, Editors, Authors and Contributors', $this->plugin_slug )
+				)
 			),
 			'icon_set' => array(
 				'title' => __( 'Icon Set', $this->plugin_slug ),

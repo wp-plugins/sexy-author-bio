@@ -3,7 +3,7 @@ Contributors: penguininitiatives
 Tags: author bio, author bio plugin, authors plugin, plugin author, author biography, about the author plugin, signature, signature plugin, plugin author bio, author box, author description, author profile, author profile fields, author social icons, post author, profile fields, responsive author box, user profile, rel author, behance, blogger, delicious, deviantart, dribbble, facebook, flickr, github, google+, google plus, instagram, linkedin, myspace, pinterest, RSS, stumbleupon, tumblr, twitter, vimeo, wordpress, yahoo, youtube
 Requires at least: 3.8
 Tested up to: 4.1
-Stable tag: 1.3.4
+Stable tag: 1.3.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -67,9 +67,8 @@ Use this shortcode:
 == Screenshots ==
 
 1. Example Sexy Author Bio Front-End Display #1
-2. Example Sexy Author Bio Front-End Display #2
-3. Example Sexy Author Bio User Settings
-4. Example Sexy Author Bio Display & Design Settings
+2. Example Sexy Author Bio User Settings
+3. Example Sexy Author Bio Display & Design Settings
 
 = How do I disable Gravatar Hovercards? =
 
@@ -80,6 +79,11 @@ Use this shortcode:
 * This plugin is released under a GPL license.
 
 == Changelog ==
+
+= 1.3.5 2/14/2015 =
+* Added "Remove links from author avatar and name" option in Sexy Author Bio settings
+* Adjusted company name so it still displays with or without the entry of a company URL
+* Added "Allow Access For" option for setting Sexy Author Bio user fields access by WordPress User Roles
 
 = 1.3.4 1/5/2015 =
 * Added support for carriage returns in the user profile bio description field to accommodate paragraphs

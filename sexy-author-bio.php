@@ -3,14 +3,14 @@
  * Sexy Author Bio
  *
  * @package   Sexy_Author_Bio
- * @author    Andy Forsberg <andyforsberg@gmail.com>
+ * @author    Andy Forsberg <sab@penguininitiatives.com>
  * @license   GPL-2.0+
- * @copyright 2014 Penguin Initiatives
+ * @copyright 2015 Penguin Initiatives
  *
  * @wordpress-plugin
  * Plugin Name:       Sexy Author Bio
  * Description:       A WordPress author bio plugin that adds a sexy, custom about the author box below your posts for single and multiple authors.
- * Version:           1.3.4
+ * Version:           1.3.5
  * Author:            penguininitiatives
  * Author URI:        http://penguininitiatives.com/
  * Text Domain:       sexy-author-bio
@@ -74,15 +74,26 @@ add_action( 'edit_user_profile', 'extra_user_profile_fields' );
  * Adds custom user profile fields shown in Sexy Author Bio
  *
  */
-function extra_user_profile_fields( $user ) { ?>
+function extra_user_profile_fields( $user ) {
+
+$settings = get_option( 'sexyauthorbio_settings' );
+
+if ( $settings['user_roles_access'] == "admins" && !current_user_can('administrator') ||
+	 $settings['user_roles_access'] == "editors" && !current_user_can('administrator') && !current_user_can('editor') ||
+	 $settings['user_roles_access'] == "authors" && !current_user_can('administrator') && !current_user_can('editor') && !current_user_can('author') ||
+	 $settings['user_roles_access'] == "contributors" && !current_user_can('administrator') && !current_user_can('editor') && !current_user_can('author') && !current_user_can('contributor')
+   ){ 
+		// nothing
+	}else{
+
+?>
+
 <h3><?php _e("Author Signature Info", "blank"); ?></h3>
 
 <div style=\"display:none!important;\">
 
-<?php $settings = get_option( 'sexyauthorbio_settings' ); ?>
-
 <?php 
-if ( $settings['author_links'] == "link_to_author_page" ){ 
+if ( $settings['author_links'] == "link_to_author_page"){ 
 	$sabhide = " style=\"display:none!important;\"";
 }else{
 	$sabhide = "";
@@ -149,7 +160,12 @@ if ( $settings['author_links'] == "link_to_author_page" ){
 </td>
 </tr>
 </table>
-<?php }
+
+<?php 
+
+	}
+
+}
 
 add_action( 'personal_options_update', 'save_extra_user_profile_fields' );
 add_action( 'edit_user_profile_update', 'save_extra_user_profile_fields' );

@@ -3,16 +3,16 @@
  * Sexy Author Bio
  *
  * @package   Sexy_Author_Bio
- * @author    Andy Forsberg <andyforsberg@gmail.com>
+ * @author    Andy Forsberg <sab@penguininitiatives.com>
  * @license   GPL-2.0+
- * @copyright 2014 Penguin Initiatives
+ * @copyright 2015 Penguin Initiatives
  */
 
 /**
  * Sexy_Author_Bio class.
  *
  * @package Sexy_Author_Bio
- * @author  Andy Forsberg <andyforsberg@gmail.com>
+ * @author  Andy Forsberg <sab@penguininitiatives.com>
  */
 class Sexy_Author_Bio {
 
@@ -430,20 +430,41 @@ class Sexy_Author_Bio {
 
 						$output['content'] .= '</div>';
 
-				
-				$output['content'] .= '<div id="sab-author"><a rel="author" href="' . $author_name_link . '" title="' . get_the_author_meta( 'display_name', $zeeauthor) .'" target="' . $settings['link_target'] . '">' . $sab_coauthor->display_name . '</a></div><div id="sab-gravatar"><a href="' . $author_avatar_link . '" target="' . $settings['link_target'] . '">';
-				if( !get_the_author_meta('avatar-url', $zeeauthor) ){
-					$output['content'] .= get_avatar( get_the_author_meta('ID', $zeeauthor), $gravatar );
+				if ( $settings['author_links'] == "not_linked" ){ 
+
+					$output['content'] .= '<div id="sab-author"><span style="color:' . $settings['highlight_color'] . ';">' . $sab_coauthor->display_name . '</span></div><div id="sab-gravatar"><span>';
+					if( !get_the_author_meta('avatar-url', $zeeauthor) ){
+						$output['content'] .= get_avatar( get_the_author_meta('ID', $zeeauthor), $gravatar );
+					}else{
+						$output['content'] .= '<img src="'.get_the_author_meta('avatar-url', $zeeauthor).'" />';
+					}
+					$output['content'] .= '</span></div>';
+
 				}else{
-					$output['content'] .= '<img src="'.get_the_author_meta('avatar-url', $zeeauthor).'" />';
+
+					$output['content'] .= '<div id="sab-author"><a rel="author" href="' . $author_name_link . '" title="' . get_the_author_meta( 'display_name', $zeeauthor) .'" target="' . $settings['link_target'] . '">' . $sab_coauthor->display_name . '</a></div><div id="sab-gravatar"><a href="' . $author_avatar_link . '" target="' . $settings['link_target'] . '">';
+					if( !get_the_author_meta('avatar-url', $zeeauthor) ){
+						$output['content'] .= get_avatar( get_the_author_meta('ID', $zeeauthor), $gravatar );
+					}else{
+						$output['content'] .= '<img src="'.get_the_author_meta('avatar-url', $zeeauthor).'" />';
+					}
+					$output['content'] .= '</a></div>';
+
 				}
-				$output['content'] .= '</a></div>';
-				if ( !get_the_author_meta('hide-job-title', $zeeauthor) && get_the_author_meta('job-title', $zeeauthor) && get_the_author_meta('company', $zeeauthor) && esc_url(get_the_author_meta('company-website-url', $zeeauthor) ) ) {
-					$output['content'] .= '<div id="sab-byline"><span id="sab-jobtitle">' . get_the_author_meta('job-title', $zeeauthor) . '</span><span id="sab-separator"> ' . $settings['separator'] . ' </span><span id="sab-company"><a href="' . esc_url(get_the_author_meta('company-website-url', $zeeauthor)) . '" target="' . $settings['link_target'] . '" style="color:' . $settings['highlight_color'] . ';">' . get_the_author_meta('company', $zeeauthor) . '</a></span></div>';
-				}
-				if ( get_the_author_meta('hide-job-title', $zeeauthor) && get_the_author_meta('company', $zeeauthor) && esc_url(get_the_author_meta('company-website-url', $zeeauthor) ) ) {
-					$output['content'] .= '<div id="sab-byline"><span id="sab-company"><a href="' . esc_url(get_the_author_meta('company-website-url', $zeeauthor)) . '" target="' . $settings['link_target'] . '" style="color:' . $settings['highlight_color'] . ';">' . get_the_author_meta('company', $zeeauthor) . '</a></span></div>';
-				}
+
+					if ( !get_the_author_meta('hide-job-title', $zeeauthor) && get_the_author_meta('job-title', $zeeauthor) && get_the_author_meta('company', $zeeauthor) && esc_url(get_the_author_meta('company-website-url', $zeeauthor) ) ) {
+						$output['content'] .= '<div id="sab-byline"><span id="sab-jobtitle">' . get_the_author_meta('job-title', $zeeauthor) . '</span><span id="sab-separator"> ' . $settings['separator'] . ' </span><span id="sab-company"><a href="' . esc_url(get_the_author_meta('company-website-url', $zeeauthor)) . '" target="' . $settings['link_target'] . '" style="color:' . $settings['highlight_color'] . ';">' . get_the_author_meta('company', $zeeauthor) . '</a></span></div>';
+					}
+					if ( !get_the_author_meta('hide-job-title', $zeeauthor) && get_the_author_meta('job-title', $zeeauthor) && get_the_author_meta('company', $zeeauthor) && !esc_url(get_the_author_meta('company-website-url', $zeeauthor) ) ) {
+						$output['content'] .= '<div id="sab-byline"><span id="sab-jobtitle">' . get_the_author_meta('job-title', $zeeauthor) . '</span><span id="sab-separator"> ' . $settings['separator'] . ' </span><span id="sab-company"><span style="color:' . $settings['highlight_color'] . ';">' . get_the_author_meta('company', $zeeauthor) . '</span></span></div>';
+					}
+					if ( get_the_author_meta('hide-job-title', $zeeauthor) && get_the_author_meta('company', $zeeauthor) && esc_url(get_the_author_meta('company-website-url', $zeeauthor) ) ) {
+						$output['content'] .= '<div id="sab-byline"><span id="sab-company"><a href="' . esc_url(get_the_author_meta('company-website-url', $zeeauthor)) . '" target="' . $settings['link_target'] . '" style="color:' . $settings['highlight_color'] . ';">' . get_the_author_meta('company', $zeeauthor) . '</a></span></div>';
+					}
+					if ( get_the_author_meta('hide-job-title', $zeeauthor) && get_the_author_meta('company', $zeeauthor) && !esc_url(get_the_author_meta('company-website-url', $zeeauthor) ) ) {
+						$output['content'] .= '<div id="sab-byline"><span id="sab-company"><span style="color:' . $settings['highlight_color'] . ';">' . get_the_author_meta('company', $zeeauthor) . '</span></span></div>';
+					}
+
 				$output['content'] .= '<div id="sab-description">' . nl2br( $sab_coauthor->description ) . '</div>';
 				$output['content'] .= '</div>';
 
@@ -525,8 +546,16 @@ class Sexy_Author_Bio {
 			$titleline = '<div id="sab-byline"><span id="sab-jobtitle">' . get_the_author_meta('job-title') . '</span><span id="sab-separator"> ' . $settings['separator'] . ' </span><span id="sab-company"><a href="' . get_the_author_meta('company-website-url') . '" target="' . $settings['link_target'] . '" style="color:' . $settings['highlight_color'] . ';">' . get_the_author_meta('company') . '</a></span></div>';
 		}
 
+		if ( !get_the_author_meta('hide-job-title') && get_the_author_meta('job-title') && get_the_author_meta('company') && !get_the_author_meta('company-website-url') ) {
+			$titleline = '<div id="sab-byline"><span id="sab-jobtitle">' . get_the_author_meta('job-title') . '</span><span id="sab-separator"> ' . $settings['separator'] . ' </span><span id="sab-company">' . get_the_author_meta('company') . '</span></div>';
+		}
+
 		if ( get_the_author_meta('hide-job-title') && get_the_author_meta('company') && get_the_author_meta('company-website-url') ) {
 			$titleline = '<div id="sab-byline"><span id="sab-company"><a href="' . get_the_author_meta('company-website-url') . '" target="' . $settings['link_target'] . '" style="color:' . $settings['highlight_color'] . ';">' . get_the_author_meta('company') . '</a></span></div>';
+		}
+
+		if ( get_the_author_meta('hide-job-title') && get_the_author_meta('company') && !get_the_author_meta('company-website-url') ) {
+			$titleline = '<div id="sab-byline"><span id="sab-company"><span style="color:' . $settings['highlight_color'] . ';">' . get_the_author_meta('company') . '</span></span></div>';
 		}
 
 		$html .= '<div id="sab-social-wrapper">';
@@ -537,15 +566,25 @@ class Sexy_Author_Bio {
 			}
 		}
 
-		$html .= '</div><div id="sab-author"><a rel="author" href="' . $author_name_link . '" title="' . esc_attr( __( '', self::get_plugin_slug() ) . '' . get_the_author() ) .'" target="' . $settings['link_target'] . '">' . get_the_author() . '</a></div><div id="sab-gravatar"><a href="' . $author_avatar_link . '" target="' . $settings['link_target'] . '">';
-		if( !get_the_author_meta('avatar-url') ){
-			$html .= get_avatar( get_the_author_meta('ID'), $gravatar );
+		if ( $settings['author_links'] == "not_linked" ){ 
+			$html .= '</div><div id="sab-author"><span style="color:' . $settings['highlight_color'] . ';">' . get_the_author() . '</span></div><div id="sab-gravatar"><span style="color:' . $settings['highlight_color'] . ';">';
+			if( !get_the_author_meta('avatar-url') ){
+				$html .= get_avatar( get_the_author_meta('ID'), $gravatar );
+			}else{
+				$html .= '<img src="'.get_the_author_meta('avatar-url').'" />';
+			}
+			$html .= '</span></div>'.$titleline.'<div id="sab-description">' . nl2br( apply_filters( 'sexyauthorbio_author_description', get_the_author_meta( 'description' ) ) ) . '</div>';
+			$html .= '</div>';
 		}else{
-			$html .= '<img src="'.get_the_author_meta('avatar-url').'" />';
+			$html .= '</div><div id="sab-author"><a rel="author" href="' . $author_name_link . '" title="' . esc_attr( __( '', self::get_plugin_slug() ) . '' . get_the_author() ) .'" target="' . $settings['link_target'] . '">' . get_the_author() . '</a></div><div id="sab-gravatar"><a href="' . $author_avatar_link . '" target="' . $settings['link_target'] . '">';
+			if( !get_the_author_meta('avatar-url') ){
+				$html .= get_avatar( get_the_author_meta('ID'), $gravatar );
+			}else{
+				$html .= '<img src="'.get_the_author_meta('avatar-url').'" />';
+			}
+			$html .= '</a></div>'.$titleline.'<div id="sab-description">' . nl2br( apply_filters( 'sexyauthorbio_author_description', get_the_author_meta( 'description' ) ) ) . '</div>';
+			$html .= '</div>';
 		}
-		$html .= '</a></div>'.$titleline.'<div id="sab-description">' . nl2br( apply_filters( 'sexyauthorbio_author_description', get_the_author_meta( 'description' ) ) ) . '</div>';
-		$html .= '</div>';
-
 
 		return $html;
 
@@ -606,8 +645,23 @@ class Sexy_Author_Bio {
 					  .'}
 					  #sab-gravatar { '
 						.($settings['gravatar'] ? 'width: '.$settings['gravatar'].'px; margin: 5px 10px 0 0;' : '')
+					  .'}';
+
+		if ( $settings['author_links'] == "not_linked" ){ 
+
+			$output .= '#sab-gravatar span { '
+						.($settings['highlight_color'] ? 'color: '.$settings['highlight_color'].';' : '')
 					  .'}
-					  #sab-gravatar a { '
+					  #sab-author span { 
+					    margin-right:10px;'
+						.($settings['author_name_decoration'] ? 'text-decoration: '.$settings['author_name_decoration'].';' : '')
+						.($settings['author_name_capitalization'] ? 'text-transform: '.$settings['author_name_capitalization'].';' : '')
+						.($settings['highlight_color'] ? 'color: '.$settings['highlight_color'].';' : '')
+					  .'}';
+
+		}else{
+
+			$output .= '#sab-gravatar a { '
 						.($settings['highlight_color'] ? 'color: '.$settings['highlight_color'].';' : '')
 					  .'}
 					  #sab-author a { 
@@ -615,8 +669,11 @@ class Sexy_Author_Bio {
 						.($settings['author_name_decoration'] ? 'text-decoration: '.$settings['author_name_decoration'].';' : '')
 						.($settings['author_name_capitalization'] ? 'text-transform: '.$settings['author_name_capitalization'].';' : '')
 						.($settings['highlight_color'] ? 'color: '.$settings['highlight_color'].';' : '')
-					  .'}
-					  #sab-byline { '
+					  .'}';
+
+		}
+
+			$output .= '#sab-byline { '
 						.($settings['byline_color'] ? 'color: '.$settings['byline_color'].';' : '')
 						.($settings['author_byline_font'] ? 'font-family: '.$settings['author_byline_font'].';' : '')
 						.($settings['author_byline_font_weight'] ? 'font-weight: '.$settings['author_byline_font_weight'].';' : '')
