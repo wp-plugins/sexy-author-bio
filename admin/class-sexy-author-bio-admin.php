@@ -107,7 +107,7 @@ class Sexy_Author_Bio_Admin {
 				'title' => __( 'Author Links', $this->plugin_slug ),
 				'default' => 'users_set',
 				'type' => 'select',
-				'description' => sprintf( __( 'Control whether or not users can set avatar and name links.', $this->plugin_slug ) ),
+				'description' => sprintf( __( 'Control whether or not users can set avatar and name links', $this->plugin_slug ) ),
 				'section' => 'settings',
 				'menu' => 'sexyauthorbio_settings',
 				'options' => array(
@@ -116,11 +116,23 @@ class Sexy_Author_Bio_Admin {
 					'not_linked' => __( 'Remove links from author avatar and name', $this->plugin_slug ),
 				)
 			),
+			'nofollow_author_links' => array(
+				'title' => __( 'Nofollow Links', $this->plugin_slug ),
+				'default' => 'follow',
+				'type' => 'select',
+				'description' => sprintf( __( 'Toggle Sexy Author Bio links between follow and nofollow', $this->plugin_slug ) ),
+				'section' => 'settings',
+				'menu' => 'sexyauthorbio_settings',
+				'options' => array(
+					'follow' => __( 'FOLLOW Links', $this->plugin_slug ),
+					'nofollow' => __( 'NOFOLLOW Links', $this->plugin_slug ),
+				)
+			),
 			'link_target' => array(
 				'title' => __( 'Link Target', $this->plugin_slug ),
 				'default' => '_top',
 				'type' => 'select',
-				'description' => sprintf( __( 'Set Sexy Author Bio links to open in current window or in a new window.', $this->plugin_slug ) ),
+				'description' => sprintf( __( 'Set Sexy Author Bio links to open in current window or in a new window', $this->plugin_slug ) ),
 				'section' => 'settings',
 				'menu' => 'sexyauthorbio_settings',
 				'options' => array(
@@ -137,7 +149,7 @@ class Sexy_Author_Bio_Admin {
 				'title' => __( 'Gravatar size', $this->plugin_slug ),
 				'default' => 100,
 				'type' => 'text',
-				'description' => sprintf( __( 'Set the Gravatar size (only integers). To configure the profile picture of the author you need to register in %s.', $this->plugin_slug ), '<a href="gravatar.com">gravatar.com</a>' ),
+				'description' => sprintf( __( 'Set the Gravatar size (only integers). To configure the profile picture of the author you need to register in %s', $this->plugin_slug ), '<a href="gravatar.com">gravatar.com</a>' ),
 				'section' => 'design',
 				'menu' => 'sexyauthorbio_settings'
 			),
@@ -359,7 +371,7 @@ class Sexy_Author_Bio_Admin {
 				'default' => 20,
 				'type' => 'text',
 				'section' => 'design',
-				'description' => __( 'Thickness of the top border of the box (only integers).', $this->plugin_slug ),
+				'description' => __( 'Thickness of the top border of the box (only integers)', $this->plugin_slug ),
 				'menu' => 'sexyauthorbio_settings'
 			),
 			'border_right_size' => array(
@@ -367,7 +379,7 @@ class Sexy_Author_Bio_Admin {
 				'default' => 0,
 				'type' => 'text',
 				'section' => 'design',
-				'description' => __( 'Thickness of the right border of the box (only integers).', $this->plugin_slug ),
+				'description' => __( 'Thickness of the right border of the box (only integers)', $this->plugin_slug ),
 				'menu' => 'sexyauthorbio_settings'
 			),
 			'border_bottom_size' => array(
@@ -375,7 +387,7 @@ class Sexy_Author_Bio_Admin {
 				'default' => 20,
 				'type' => 'text',
 				'section' => 'design',
-				'description' => __( 'Thickness of the bottom border of the box (only integers).', $this->plugin_slug ),
+				'description' => __( 'Thickness of the bottom border of the box (only integers)', $this->plugin_slug ),
 				'menu' => 'sexyauthorbio_settings'
 			),
 			'border_left_size' => array(
@@ -383,7 +395,7 @@ class Sexy_Author_Bio_Admin {
 				'default' => 0,
 				'type' => 'text',
 				'section' => 'design',
-				'description' => __( 'Thickness of the left border of the box (only integers).', $this->plugin_slug ),
+				'description' => __( 'Thickness of the left border of the box (only integers)', $this->plugin_slug ),
 				'menu' => 'sexyauthorbio_settings'
 			),
 			'border_style' => array(
@@ -416,7 +428,7 @@ class Sexy_Author_Bio_Admin {
 				'default' => 'hide',
 				'type' => 'select',
 				'section' => 'mobile',
-				'description' => __( 'Toggle display of Sexy Author Bio Avatars on smartphones (0 - 767px in width).', $this->plugin_slug ),
+				'description' => __( 'Toggle display of Sexy Author Bio Avatars on smartphones (0 - 767px in width)', $this->plugin_slug ),
 				'menu' => 'sexyauthorbio_settings',
 				'options' => array(
 					'display' => __( 'Display', $this->plugin_slug ),
@@ -433,7 +445,7 @@ class Sexy_Author_Bio_Admin {
 				'default' => 'contributors',
 				'type' => 'select',
 				'section' => 'user_roles',
-				'description' => __( 'Control which user roles have access to Sexy Author Bio user fields.', $this->plugin_slug ),
+				'description' => __( 'Control which user roles have access to Sexy Author Bio user fields', $this->plugin_slug ),
 				'menu' => 'sexyauthorbio_settings',
 				'options' => array(
 					'admins' => __( 'Admins', $this->plugin_slug ),
@@ -460,7 +472,7 @@ class Sexy_Author_Bio_Admin {
 				'default' => 2,
 				'type' => 'text',
 				'section' => 'icon_set',
-				'description' => __( 'The width between social icons.', $this->plugin_slug ),
+				'description' => __( 'The width between social icons', $this->plugin_slug ),
 				'menu' => 'sexyauthorbio_settings'
 			),
 			'icon_hover_effect' => array(
@@ -468,7 +480,7 @@ class Sexy_Author_Bio_Admin {
 				'default' => 'fade',
 				'type' => 'select',
 				'section' => 'icon_set',
-				'description' => __( 'The effect when users hover over social icons with their cursor.', $this->plugin_slug ),
+				'description' => __( 'The effect when users hover over social icons with their cursor', $this->plugin_slug ),
 				'menu' => 'sexyauthorbio_settings',
 				'options' => array(
 					'fade' => __( 'Fade', $this->plugin_slug ),
@@ -500,7 +512,7 @@ class Sexy_Author_Bio_Admin {
 				'default' => '',
 				'type' => 'textarea',
 				'section' => 'custom_css',
-				'description' => __( 'Paste your custom CSS here.', $this->plugin_slug ),
+				'description' => __( 'Paste your custom CSS here', $this->plugin_slug ),
 				'menu' => 'sexyauthorbio_settings'
 			),
 			'responsive_css' => array(
@@ -513,7 +525,7 @@ class Sexy_Author_Bio_Admin {
 				'default' => '',
 				'type' => 'textarea',
 				'section' => 'responsive_css',
-				'description' => __( 'Paste your custom CSS for DESKTOP 1,200px + here.', $this->plugin_slug ),
+				'description' => __( 'Paste your custom CSS for DESKTOP 1,200px + here', $this->plugin_slug ),
 				'menu' => 'sexyauthorbio_settings'
 			),
 			'custom_css_ipad_landscape' => array(
@@ -521,7 +533,7 @@ class Sexy_Author_Bio_Admin {
 				'default' => '',
 				'type' => 'textarea',
 				'section' => 'responsive_css',
-				'description' => __( 'Paste your custom CSS for IPAD LANDSCAPE 1019 - 1199px here.', $this->plugin_slug ),
+				'description' => __( 'Paste your custom CSS for IPAD LANDSCAPE 1019 - 1199px here', $this->plugin_slug ),
 				'menu' => 'sexyauthorbio_settings'
 			),
 			'custom_css_ipad_portrait' => array(
@@ -529,7 +541,7 @@ class Sexy_Author_Bio_Admin {
 				'default' => '',
 				'type' => 'textarea',
 				'section' => 'responsive_css',
-				'description' => __( 'Paste your custom CSS for IPAD PORTRAIT 768 - 1018px here.', $this->plugin_slug ),
+				'description' => __( 'Paste your custom CSS for IPAD PORTRAIT 768 - 1018px here', $this->plugin_slug ),
 				'menu' => 'sexyauthorbio_settings'
 			),
 			'custom_css_smartphones' => array(
@@ -537,7 +549,7 @@ class Sexy_Author_Bio_Admin {
 				'default' => '',
 				'type' => 'textarea',
 				'section' => 'responsive_css',
-				'description' => __( 'Paste your custom CSS for SMARTPHONES 0 - 767px here.', $this->plugin_slug ),
+				'description' => __( 'Paste your custom CSS for SMARTPHONES 0 - 767px here', $this->plugin_slug ),
 				'menu' => 'sexyauthorbio_settings'
 			),
 		);
