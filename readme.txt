@@ -11,7 +11,7 @@ A WordPress author bio plugin that adds a sexy, custom about the author box belo
 
 == Description ==
 
-A WordPress author bio plugin that supports single and multiple authors. It offers tons of options to customize the box after WordPress posts about the author and most importantly makes it sexy lookin', rather than dull and bland.
+[Sexy Author Bio](http://penguininitiatives.com/project-view/sexy-author-bio/) is a WordPress author bio plugin that supports single and multiple authors. It offers tons of options to customize the box after WordPress posts about the author and most importantly makes it sexy lookin', rather than dull and bland.
 
 The author bio box is responsive and includes five sexy social icon sets to choose from, with support for all the following social networks: Behance, Blogger, Delicious, DeviantArt, Dribbble, Facebook, Flickr, GitHub, Google+, Instagram, LinkedIn, MySpace, Pinterest, RSS, StumbleUpon, Tumblr, Twitter, Vimeo, WordPress, Yahoo! & YouTube.
 
