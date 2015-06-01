@@ -15,6 +15,9 @@ The [Sexy Author Bio WordPress Plugin](http://penguininitiatives.com/project-vie
 
 The author bio box is responsive and includes five sexy social icon sets to choose from, with support for all the following social networks: Behance, Blogger, Delicious, DeviantArt, Dribbble, Facebook, Flickr, GitHub, Google+, Instagram, LinkedIn, MySpace, Pinterest, RSS, StumbleUpon, Tumblr, Twitter, Vimeo, WordPress, Yahoo! & YouTube.
 
+= Live Demo =
+* [View Live Demo of Sexy Author Bio](http://penguininitiatives.com/best-wordpress-plugins/#sabdemo)
+
 = Credits =
 
 * Plugin built and maintained by [@AndyForsberg](https://twitter.com/andyforsberg) of [Penguin Initiatives](http://penguininitiatives.com/).
