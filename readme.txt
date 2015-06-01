@@ -20,7 +20,7 @@ The author bio box is responsive and includes five sexy social icon sets to choo
 
 = Credits =
 
-* Plugin built and maintained by [@AndyForsberg](https://twitter.com/andyforsberg) of [Penguin Initiatives](http://penguininitiatives.com/).
+* Plugin built and maintained by [Andy Forsberg](http://andyforsberg.com/) of [Penguin Initiatives](http://penguininitiatives.com/).
 * The included [Geekly](https://www.behance.net/gallery/Geekly-40-Flat-Icons/10357351) circular social icons are complements of [@Abdo_Ba](https://twitter.com/Abdo_Ba).
 * This is a derivative work of the [Author Bio Box WordPress Plugin](http://wordpress.org/plugins/author-bio-box/), which was authored by [Claudio Sanches](http://profiles.wordpress.org/claudiosanches/).
 
