@@ -11,24 +11,24 @@ A WordPress author bio plugin that adds a sexy, custom about the author box belo
 
 == Description ==
 
-The [Sexy Author Bio WordPress Plugin](http://penguininitiatives.com/project-view/sexy-author-bio/) is a WordPress author bio plugin that supports single and multiple authors. It offers tons of options to customize the box after WordPress posts about the author and most importantly makes it sexy lookin', rather than dull and bland.
+Sexy Author Bio is a WordPress author bio plugin that supports single and multiple authors. It offers tons of options to customize the box after WordPress posts about the author and most importantly makes it sexy lookin', rather than dull and bland.
 
 The author bio box is responsive and includes five sexy social icon sets to choose from, with support for all the following social networks: Behance, Blogger, Delicious, DeviantArt, Dribbble, Facebook, Flickr, GitHub, Google+, Instagram, LinkedIn, MySpace, Pinterest, RSS, StumbleUpon, Tumblr, Twitter, Vimeo, WordPress, Yahoo! & YouTube.
 
-= Live Demo =
-* [View Live Demo of Sexy Author Bio](http://penguininitiatives.com/best-wordpress-plugins/#sabdemo)
-
 = Credits =
 
-* Plugin built and maintained by [Andy Forsberg](http://andyforsberg.com/) of [Penguin Initiatives](http://penguininitiatives.com/).
+* Plugin built and maintained by [Andy Forsberg](http://andyforsberg.com/).
 * The included [Geekly](https://www.behance.net/gallery/Geekly-40-Flat-Icons/10357351) circular social icons are complements of [@Abdo_Ba](https://twitter.com/Abdo_Ba).
 * This is a derivative work of the [Author Bio Box WordPress Plugin](http://wordpress.org/plugins/author-bio-box/), which was authored by [Claudio Sanches](http://profiles.wordpress.org/claudiosanches/).
 
 = Latest from Penguin Initiatives =
 
 * [Best WordPress Hosting](http://penguininitiatives.com/best-wordpress-hosting/)
-* [Best Free & Premium WordPress Plugins by Category in 2014](http://penguininitiatives.com/best-wordpress-plugins/)
-* [Fastest & Best WordPress Themes in 2014](http://penguininitiatives.com/fastest-wordpress-themes-2014/)
+* [Google Tag Manager Tracking Guide for WordPress](http://penguin.pub/1OmYK5C)
+* [25 Best Android & iOS Mobile Apps for WordPress Bloggers](http://penguin.pub/1QkkOtp)
+
+= Live Demo =
+* [View Live Demo of Sexy Author Bio](http://penguin.pub/1FpyDSh)
 
 == Installation ==
 
