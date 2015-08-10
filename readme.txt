@@ -2,8 +2,8 @@
 Contributors: penguininitiatives
 Tags: author bio, author bio plugin, authors plugin, plugin author, author biography, about the author plugin, signature, signature plugin, plugin author bio, author box, author description, author profile, author profile fields, author social icons, post author, profile fields, responsive author box, user profile, rel author, behance, blogger, delicious, deviantart, dribbble, facebook, flickr, github, google+, google plus, instagram, linkedin, myspace, pinterest, RSS, stumbleupon, tumblr, twitter, vimeo, wordpress, yahoo, youtube
 Requires at least: 3.8
-Tested up to: 4.1
-Stable tag: 1.3.6
+Tested up to: 4.2.4
+Stable tag: 1.3.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -82,6 +82,12 @@ Use this shortcode:
 * This plugin is released under a GPL license.
 
 == Changelog ==
+
+= 1.3.7 8/10/2015 =
+* Added "Icon Position" setting that allows you to display icons at the top or bottom of your bio
+* Fixed "Display Avatar on Smartphones" setting bug
+* Cleaned up the styles further to allow more flexibility and better responsiveness
+* Disabled the resetting of Sexy Author Bio's settings upon deactivation of the plugin
 
 = 1.3.6 2/15/2015 =
 * Added "Nofollow Links" option in Sexy Author Bio settings

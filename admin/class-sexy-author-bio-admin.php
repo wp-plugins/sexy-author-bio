@@ -487,6 +487,18 @@ class Sexy_Author_Bio_Admin {
 					'none' => __( 'None', $this->plugin_slug )
 				)
 			),
+			'icon_position' => array(
+				'title' => __( 'Icon Position', $this->plugin_slug ),
+				'default' => 'fade',
+				'type' => 'select',
+				'section' => 'icon_set',
+				'description' => __( 'The position of the icons relative to the bio', $this->plugin_slug ),
+				'menu' => 'sexyauthorbio_settings',
+				'options' => array(
+					'top' => __( 'Top', $this->plugin_slug ),
+					'bottom' => __( 'Bottom', $this->plugin_slug )
+				)
+			),
 			'pick_icon_set' => array(
 				'title' => __( 'Pick Icon Set', $this->plugin_slug ),
 				'default' => 'flat-square',

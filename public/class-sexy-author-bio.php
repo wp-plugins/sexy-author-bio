@@ -252,6 +252,7 @@ class Sexy_Author_Bio {
 			'border_style' => 'solid',
 			'border_color' => '#444444',
 			'icon_hover_effect' => 'fade',
+			'icon_position' => 'top',
 			'pick_icon_set' => 'flat-circle',
 			'icon_size' => 48,
 			'icon_spacing' => 2
@@ -268,7 +269,7 @@ class Sexy_Author_Bio {
 	 * @return void
 	 */
 	private static function single_deactivate() {
-		delete_option( 'sexyauthorbio_settings' );
+		//delete_option( 'sexyauthorbio_settings' );
 	}
 
 	/**
@@ -425,18 +426,21 @@ class Sexy_Author_Bio {
 					$nofollowshort = "";
 				}
 
-				$iconset = $settings['pick_icon_set'];
+				if($settings['icon_position'] == "top"){
 
+					$iconset = $settings['pick_icon_set'];
 
-						$output['content'] .= '<div id="sab-social-wrapper">';
+					$output['content'] .= '<div id="sab-social-wrapper">';
 
-						foreach ( array_reverse($social) as $network => $url ) {
-							if ( $url ){
-								$output['content'] .= '<a id="sab-'.$network.'" '.$nofollow.'href="' . esc_url($url) . '" target="' . $settings['link_target'] . '"><img '.$fade.'id="sig-'.$network.'" alt="' . $sab_coauthor->display_name . ' on '.$network.'" src="'.plugins_url( $path, $plugin ).'/sexy-author-bio/public/assets/images/'.$iconset.'/'.$network.'.png"></a>';
-							}
+					foreach ( array_reverse($social) as $network => $url ) {
+						if ( $url ){
+							$output['content'] .= '<a id="sab-'.$network.'" '.$nofollow.'href="' . esc_url($url) . '" target="' . $settings['link_target'] . '"><img '.$fade.'id="sig-'.$network.'" alt="' . $sab_coauthor->display_name . ' on '.$network.'" src="'.plugins_url( $path, $plugin ).'/sexy-author-bio/public/assets/images/'.$iconset.'/'.$network.'.png"></a>';
 						}
+					}
 
-						$output['content'] .= '</div>';
+					$output['content'] .= '</div>';
+
+				}
 
 				if ( $settings['author_links'] == "not_linked" ){ 
 
@@ -474,6 +478,23 @@ class Sexy_Author_Bio {
 					}
 
 				$output['content'] .= '<div id="sab-description">' . nl2br( $sab_coauthor->description ) . '</div>';
+
+				if($settings['icon_position'] == "bottom"){
+
+					$iconset = $settings['pick_icon_set'];
+
+					$output['content'] .= '<div id="sab-social-wrapper">';
+
+					foreach ( array_reverse($social) as $network => $url ) {
+						if ( $url ){
+							$output['content'] .= '<a id="sab-'.$network.'" '.$nofollow.'href="' . esc_url($url) . '" target="' . $settings['link_target'] . '"><img '.$fade.'id="sig-'.$network.'" alt="' . $sab_coauthor->display_name . ' on '.$network.'" src="'.plugins_url( $path, $plugin ).'/sexy-author-bio/public/assets/images/'.$iconset.'/'.$network.'.png"></a>';
+						}
+					}
+
+					$output['content'] .= '</div>';
+
+				}
+
 				$output['content'] .= '</div>';
 
 				echo $output['content'];
@@ -574,16 +595,22 @@ class Sexy_Author_Bio {
 			$titleline = '<div id="sab-byline"><span id="sab-company"><span style="color:' . $settings['highlight_color'] . ';">' . get_the_author_meta('company') . '</span></span></div>';
 		}
 
-		$html .= '<div id="sab-social-wrapper">';
+		if($settings['icon_position'] == "top"){
+			
+				$html .= '<div id="sab-social-wrapper">';
 
-		foreach ( array_reverse($social) as $network => $url ) {
-			if ( $url ){
-				$html .= '<a id="sab-'.$network.'" '.$nofollow.'href="' . $url . '" target="' . $settings['link_target'] . '"><img '.$fade.'id="sig-'.$network.'" alt="'.get_the_author().' on '.$network.'" src="'.plugins_url( $path, $plugin ).'/sexy-author-bio/public/assets/images/'.$iconset.'/'.$network.'.png"></a>';
+				foreach ( array_reverse($social) as $network => $url ) {
+					if ( $url ){
+						$html .= '<a id="sab-'.$network.'" '.$nofollow.'href="' . $url . '" target="' . $settings['link_target'] . '"><img '.$fade.'id="sig-'.$network.'" alt="'.get_the_author().' on '.$network.'" src="'.plugins_url( $path, $plugin ).'/sexy-author-bio/public/assets/images/'.$iconset.'/'.$network.'.png"></a>';
+					}
+				}
+
+				$html .= '</div>';
+
 			}
-		}
 
 		if ( $settings['author_links'] == "not_linked" ){ 
-			$html .= '</div><div id="sab-author"><span style="color:' . $settings['highlight_color'] . ';">' . get_the_author() . '</span></div><div id="sab-gravatar"><span style="color:' . $settings['highlight_color'] . ';">';
+			$html .= '<div id="sab-author"><span style="color:' . $settings['highlight_color'] . ';">' . get_the_author() . '</span></div><div id="sab-gravatar"><span style="color:' . $settings['highlight_color'] . ';">';
 			if( !get_the_author_meta('avatar-url') ){
 				$html .= get_avatar( get_the_author_meta('ID'), $gravatar, '', get_the_author() );
 			}else{
@@ -592,15 +619,31 @@ class Sexy_Author_Bio {
 			$html .= '</span></div>'.$titleline.'<div id="sab-description">' . nl2br( apply_filters( 'sexyauthorbio_author_description', get_the_author_meta( 'description' ) ) ) . '</div>';
 			$html .= '</div>';
 		}else{
-			$html .= '</div><div id="sab-author"><a rel="'.$nofollowshort.'author" href="' . $author_name_link . '" title="' . esc_attr( __( '', self::get_plugin_slug() ) . '' . get_the_author() ) .'" target="' . $settings['link_target'] . '">' . get_the_author() . '</a></div><div id="sab-gravatar"><a '.$nofollow.'href="' . $author_avatar_link . '" target="' . $settings['link_target'] . '">';
+			$html .= '<div id="sab-author"><a rel="'.$nofollowshort.'author" href="' . $author_name_link . '" title="' . esc_attr( __( '', self::get_plugin_slug() ) . '' . get_the_author() ) .'" target="' . $settings['link_target'] . '">' . get_the_author() . '</a></div><div id="sab-gravatar"><a '.$nofollow.'href="' . $author_avatar_link . '" target="' . $settings['link_target'] . '">';
 			if( !get_the_author_meta('avatar-url') ){
 				$html .= get_avatar( get_the_author_meta('ID'), $gravatar, '', get_the_author() );
 			}else{
 				$html .= '<img alt="'.get_the_author().'" src="'.get_the_author_meta('avatar-url').'" />';
 			}
 			$html .= '</a></div>'.$titleline.'<div id="sab-description">' . nl2br( apply_filters( 'sexyauthorbio_author_description', get_the_author_meta( 'description' ) ) ) . '</div>';
+			
+			if($settings['icon_position'] == "bottom"){
+		
+				$html .= '<div id="sab-social-wrapper">';
+
+				foreach ( array_reverse($social) as $network => $url ) {
+					if ( $url ){
+						$html .= '<a id="sab-'.$network.'" '.$nofollow.'href="' . $url . '" target="' . $settings['link_target'] . '"><img '.$fade.'id="sig-'.$network.'" alt="'.get_the_author().' on '.$network.'" src="'.plugins_url( $path, $plugin ).'/sexy-author-bio/public/assets/images/'.$iconset.'/'.$network.'.png"></a>';
+					}
+				}
+
+				$html .= '</div>';
+
+			}
+
 			$html .= '</div>';
 		}
+
 
 		return $html;
 
@@ -650,6 +693,12 @@ class Sexy_Author_Bio {
 			$customcssipadlandscape = $settings['custom_css_ipad_landscape'];
 			$customcssipadportrait = $settings['custom_css_ipad_portrait'];
 			$customcsssmartphones = $settings['custom_css_smartphones'];
+			$mobileavatardisplay = $settings['mobile_avatar_display'];
+			if($mobileavatardisplay == "hide"){ 
+				$mobileavatardisplay = "#sab-gravatar{display:none!important;}"; 
+			}else{
+				$mobileavatardisplay = "";
+			}
 
 			$output = '<style id="sexy-author-bio-css" type="text/css" media="screen">
 					  #sexy-author-bio { ' . $styles . ' }
@@ -660,7 +709,7 @@ class Sexy_Author_Bio {
 						.($settings['author_name_line_height'] ? 'line-height: '.$settings['author_name_line_height'].'px;' : '')
 					  .'}
 					  #sab-gravatar { '
-						.($settings['gravatar'] ? 'width: '.$settings['gravatar'].'px; margin: 5px 10px 0 0;' : '')
+						.($settings['gravatar'] ? 'width: '.$settings['gravatar'].'px;' : '')
 					  .'}';
 
 		if ( $settings['author_links'] == "not_linked" ){ 
@@ -704,7 +753,6 @@ class Sexy_Author_Bio {
 						.($settings['author_biography_font_size'] ? 'font-size: '.$settings['author_biography_font_size'].'px;' : '')
 						.($settings['author_biography_line_height'] ? 'line-height: '.$settings['author_biography_line_height'].'px;' : '')
 					  .'}
-					  #sig-twitter, #sig-google, #sig-facebook, #sig-linkedin { margin-bottom: 10px; }
 					  [id^=sig-] { '
 						.($settings['icon_size'] ? 'height: '.$settings['icon_size'].'px;' : '')
 						.($settings['icon_size'] ? 'width: '.$settings['icon_size'].'px;' : '')
@@ -728,7 +776,7 @@ class Sexy_Author_Bio {
 					  [id^=sig-] { margin-left: 0;'
 						.($settings['icon_spacing'] ? 'margin-right: '.$settings['icon_spacing'].'px;' : '')
 					  .'}
-					  '.$customcsssmartphones.'
+					  '.$customcsssmartphones.$mobileavatardisplay.'
 					  }
 					  </style>';
 
