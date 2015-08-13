@@ -477,7 +477,7 @@ class Sexy_Author_Bio {
 						$output['content'] .= '<div id="sab-byline"><span id="sab-company"><span style="color:' . $settings['highlight_color'] . ';">' . get_the_author_meta('company', $zeeauthor) . '</span></span></div>';
 					}
 
-				$output['content'] .= '<div id="sab-description">' . nl2br( $sab_coauthor->description ) . '</div>';
+				$output['content'] .= '<div id="sab-description">' . do_shortcode( nl2br( $sab_coauthor->description ) ) . '</div>';
 
 				if($settings['icon_position'] == "bottom"){
 
@@ -616,7 +616,7 @@ class Sexy_Author_Bio {
 			}else{
 				$html .= '<img alt="'.get_the_author().'" src="'.get_the_author_meta('avatar-url').'" />';
 			}
-			$html .= '</span></div>'.$titleline.'<div id="sab-description">' . nl2br( apply_filters( 'sexyauthorbio_author_description', get_the_author_meta( 'description' ) ) ) . '</div>';
+			$html .= '</span></div>'.$titleline.'<div id="sab-description">' . do_shortcode( nl2br( apply_filters( 'sexyauthorbio_author_description', get_the_author_meta( 'description' ) ) ) ) . '</div>';
 			$html .= '</div>';
 		}else{
 			$html .= '<div id="sab-author"><a rel="'.$nofollowshort.'author" href="' . $author_name_link . '" title="' . esc_attr( __( '', self::get_plugin_slug() ) . '' . get_the_author() ) .'" target="' . $settings['link_target'] . '">' . get_the_author() . '</a></div><div id="sab-gravatar"><a '.$nofollow.'href="' . $author_avatar_link . '" target="' . $settings['link_target'] . '">';
@@ -625,7 +625,7 @@ class Sexy_Author_Bio {
 			}else{
 				$html .= '<img alt="'.get_the_author().'" src="'.get_the_author_meta('avatar-url').'" />';
 			}
-			$html .= '</a></div>'.$titleline.'<div id="sab-description">' . nl2br( apply_filters( 'sexyauthorbio_author_description', get_the_author_meta( 'description' ) ) ) . '</div>';
+			$html .= '</a></div>'.$titleline.'<div id="sab-description">' . do_shortcode( nl2br( apply_filters( 'sexyauthorbio_author_description', get_the_author_meta( 'description' ) ) ) ) . '</div>';
 			
 			if($settings['icon_position'] == "bottom"){
 		
